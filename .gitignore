@@ -1,0 +1,21 @@
+# Project content belongs outside the skill repository
+.DS_Store
+__pycache__/
+*.py[cod]
+.env
+.env.*
+!.env.example
+node_modules/
+.venv/
+venv/
+work/
+outputs/
+renders/
+recordings/
+private/
+evidence/
+*.log
+*.voice-input.json
+workflow.json
+
+.cut-station-setup.json
