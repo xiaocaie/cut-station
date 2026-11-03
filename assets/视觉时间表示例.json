@@ -1,0 +1,25 @@
+{
+  "fps": 30,
+  "total_frames": 90,
+  "visuals": [
+    {
+      "id": "search_github",
+      "start_frame": 0,
+      "end_frame": 30,
+      "settled_start_frame": 5,
+      "settled_end_frame": 30,
+      "effective": true,
+      "requires_hold": true
+    },
+    {
+      "id": "result",
+      "start_frame": 30,
+      "end_frame": 90,
+      "settled_start_frame": 50,
+      "settled_end_frame": 90,
+      "effective": true,
+      "requires_hold": true
+    }
+  ],
+  "note": "仅为声明时间表的结构示例；实际区间由当前工程及可见画面确认，不能据此声称真实可读"
+}

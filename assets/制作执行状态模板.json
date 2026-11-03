@@ -1,0 +1,83 @@
+{
+  "schema_version": 2,
+  "usage": "结构参考；实际用workflow_guard.py init按本轮范围生成，不把此模板当作通过记录",
+  "project": "",
+  "mode": "preview",
+  "voice": "jianying",
+  "enforcement": "cooperative_local_gate",
+  "epoch": "",
+  "route": [
+    "intake",
+    "inventory",
+    "script",
+    "voice_input",
+    "jianying_voice",
+    "audio_timing",
+    "srt",
+    "rough_edit",
+    "motion_sound_plan",
+    "polish",
+    "review",
+    "delivery"
+  ],
+  "features": [],
+  "script_review_required": false,
+  "protected": [],
+  "constraints": [],
+  "constraint_shape": {
+    "id": "C01",
+    "requirement": "",
+    "stages": [],
+    "scope": "whole_video / time_range / shot / audio_track / this_revision",
+    "evidence": [],
+    "supersedes": []
+  },
+  "defaults": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 60,
+    "container": "mov",
+    "display_font": "Smiley Sans"
+  },
+  "reads": {},
+  "stages": {},
+  "events": [],
+  "extra_docs": {},
+  "hard_gates": [
+    {
+      "id": "G01",
+      "requirement": "录屏默认1×且禁止慢放；无掉帧/卡顿交付体验",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "G02",
+      "requirement": "无闪切；完整动作/结果可理解后切出，允许一镜跨字幕",
+      "status": "pending",
+      "evidence": []
+    },
+    {
+      "id": "G03",
+      "requirement": "荧光大字统一暖白实心字芯/黄绿柔光/零描边，禁止橘色描边",
+      "status": "pending",
+      "evidence": []
+    }
+  ],
+  "voice_input": {
+    "mode": "whole_paragraph",
+    "text_object_count": 1,
+    "planned_generation_count": 1,
+    "narration_source": "",
+    "input_manifest": "",
+    "ui_recipe_version": "mac-11.6.0-20261102"
+  },
+  "timing_metrics": {
+    "ui_calls": 0,
+    "observations": 0,
+    "retries": 0,
+    "generation_wait_seconds": null,
+    "export_wait_seconds": null,
+    "local_processing_seconds": null,
+    "listening_seconds": null
+  }
+}
