@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "verified_on": "2026-11-03",
+  "projects": {
+    "hyperframes": {
+      "repository": "heygen-com/hyperframes",
+      "ref": "05ddddbbf08fd358b5879726f935d5414733da3a",
+      "skills": [
+        {
+          "name": "hyperframes",
+          "path": "skills/hyperframes"
+        },
+        {
+          "name": "hyperframes-cli",
+          "path": "skills/hyperframes-cli"
+        },
+        {
+          "name": "hyperframes-registry",
+          "path": "skills/hyperframes-registry"
+        },
+        {
+          "name": "media-use",
+          "path": "skills/media-use"
+        }
+      ],
+      "license_note": "Apache-2.0",
+      "runtime_requirements": [
+        "Node.js 22+",
+        "FFmpeg",
+        "Chromium/headless Chrome for rendering; browser download may be needed"
+      ],
+      "service_notes": [
+        "Local rendering does not require paid HeyGen services. Some media generation/cloud features may require credentials, network access and usage charges; ask separately before using."
+      ],
+      "source": "https://github.com/heygen-com/hyperframes/blob/05ddddbbf08fd358b5879726f935d5414733da3a/skills/hyperframes/SKILL.md"
+    },
+    "video-use": {
+      "repository": "browser-use/video-use",
+      "ref": "43cfc566833548093455c9d4a46bd69913b7e552",
+      "skills": [
+        {
+          "name": "video-use",
+          "path": "."
+        }
+      ],
+      "license_note": "MIT",
+      "runtime_requirements": [
+        "Python >=3.10",
+        "requests",
+        "librosa",
+        "matplotlib",
+        "pillow",
+        "numpy",
+        "FFmpeg and ffprobe",
+        "uv sync or pip install -e . after skill files installation if helpers are to be used"
+      ],
+      "service_notes": [
+        "Upstream transcription uses ElevenLabs Scribe, needs ELEVENLABS_API_KEY and can incur usage charges.",
+        "Do not trigger transcription during installation unless explicitly requested.",
+        "For silent screen recordings or an already verified timing source, do not introduce ASR merely to exercise this dependency.",
+        "yt-dlp is optional; animation engines are lazy optional dependencies."
+      ],
+      "source": "https://github.com/browser-use/video-use/blob/43cfc566833548093455c9d4a46bd69913b7e552/SKILL.md"
+    },
+    "remotion": {
+      "repository": "remotion-dev/skills",
+      "ref": "c7cb2fdcacd134fb2ccb9b7a44f9ffa44e467271",
+      "skills": [
+        {
+          "name": "remotion-best-practices",
+          "path": "skills/remotion-best-practices"
+        }
+      ],
+      "license_note": "No LICENSE found at standalone skill repository root and package.json has no license field. Do not assert MIT. Remotion runtime has its own Remotion License.",
+      "runtime_requirements": [
+        "Node.js and npm/bun for React/Remotion projects",
+        "Project-local Remotion and React dependencies",
+        "Browser/headless rendering prerequisites"
+      ],
+      "service_notes": [
+        "Remotion runtime commercial eligibility follows its own license; certain organizations need Company License. This is distinct from installing text skill files."
+      ],
+      "source": "https://github.com/remotion-dev/skills/blob/c7cb2fdcacd134fb2ccb9b7a44f9ffa44e467271/skills/remotion-best-practices/SKILL.md"
+    },
+    "shotcraft": {
+      "repository": "Vincentwei1021/video-shotcraft",
+      "ref": "1266a3ec4831289c4d893d42dd5102723658039a",
+      "skills": [
+        {
+          "name": "video-shotcraft",
+          "path": "."
+        }
+      ],
+      "license_note": "Apache-2.0 for code/docs; audio has per-file license recorded in attribution/source manifests.",
+      "runtime_requirements": [
+        "Node.js and npm",
+        "FFmpeg and ffprobe",
+        "Project-local Remotion/React for render",
+        "uv only for BGM beat analysis",
+        "Puppeteer only for page capture; upstream capture script can install it on demand"
+      ],
+      "service_notes": [
+        "Optional publishing and generative media APIs are separate features with their own credentials/costs and must not be configured or called merely by installation.",
+        "Check each chosen audio file attribution/license before distribution; retain required credits.",
+        "Rendering also follows Remotion runtime license."
+      ],
+      "source": "https://github.com/Vincentwei1021/video-shotcraft/blob/1266a3ec4831289c4d893d42dd5102723658039a/SKILL.md"
+    }
+  }
+}

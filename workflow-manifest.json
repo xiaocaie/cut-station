@@ -1,0 +1,455 @@
+{
+  "schema_version": 2,
+  "enforcement": "cooperative_local_gate",
+  "core_docs": [
+    "SKILL.md",
+    "references/execution-ledger.md",
+    "references/default-profile.md"
+  ],
+  "routes": {
+    "script": [
+      "intake",
+      "inventory",
+      "script",
+      "delivery"
+    ],
+    "subtitles": [
+      "intake",
+      "srt",
+      "delivery"
+    ],
+    "voice": [
+      "intake",
+      "script",
+      "voice_input",
+      "jianying_voice",
+      "audio_timing",
+      "srt",
+      "delivery"
+    ],
+    "full": [
+      "intake",
+      "inventory",
+      "script",
+      "voice_input",
+      "jianying_voice",
+      "audio_timing",
+      "srt",
+      "rough_edit",
+      "motion_sound_plan",
+      "polish",
+      "review",
+      "export",
+      "delivery"
+    ],
+    "preview": [
+      "intake",
+      "inventory",
+      "script",
+      "voice_input",
+      "jianying_voice",
+      "audio_timing",
+      "srt",
+      "rough_edit",
+      "motion_sound_plan",
+      "polish",
+      "review",
+      "delivery"
+    ],
+    "edit": [
+      "intake",
+      "rough_edit",
+      "motion_sound_plan",
+      "polish",
+      "review",
+      "delivery"
+    ],
+    "font_only": [
+      "intake",
+      "polish",
+      "review",
+      "delivery"
+    ],
+    "export": [
+      "intake",
+      "export",
+      "delivery"
+    ],
+    "asset_package": [
+      "intake",
+      "inventory",
+      "script",
+      "voice_input",
+      "jianying_voice",
+      "audio_timing",
+      "srt",
+      "motion_sound_plan",
+      "polish",
+      "delivery"
+    ],
+    "voice_input": [
+      "intake",
+      "script",
+      "voice_input",
+      "delivery"
+    ]
+  },
+  "stages": {
+    "intake": {
+      "docs": [],
+      "rules": [
+        "SCOPE"
+      ],
+      "checks": [
+        "scope_and_protected"
+      ]
+    },
+    "inventory": {
+      "docs": [
+        {
+          "path": "references/AI视频制作SOP.md",
+          "sections": [
+            "阶段1：素材盘点与产品取证"
+          ]
+        },
+        "references/production-data-contract.md"
+      ],
+      "rules": [
+        "FACTS"
+      ],
+      "checks": [
+        "source_facts"
+      ]
+    },
+    "script": {
+      "docs": [
+        "references/internet-copywriting.md",
+        {
+          "path": "references/script-subtitles.md",
+          "sections": [
+            "写稿与交互",
+            "分句标准与可测边界"
+          ]
+        },
+        {
+          "path": "references/AI视频制作SOP.md",
+          "sections": [
+            "阶段3：主题、简报和可审核脚本"
+          ]
+        }
+      ],
+      "rules": [
+        "SCRIPT"
+      ],
+      "checks": [
+        "script_evidence_and_scope"
+      ]
+    },
+    "voice_input": {
+      "docs": [
+        {
+          "path": "references/jianying-voice-ai-edit.md",
+          "sections": [
+            "1 整段输入与字幕分层",
+            "2 固定操作顺序",
+            "3 Computer Use 提速协议"
+          ]
+        },
+        "references/jianying-ui-recipe.md"
+      ],
+      "rules": [
+        "WHOLE_TEXT"
+      ],
+      "checks": [
+        "whole_text_prepared"
+      ]
+    },
+    "jianying_voice": {
+      "docs": [
+        "references/jianying-voice-ai-edit.md",
+        "references/jianying-ui-recipe.md"
+      ],
+      "rules": [
+        "ONE_GENERATION"
+      ],
+      "checks": [
+        "one_text_one_generation",
+        "real_audio_export"
+      ]
+    },
+    "audio_timing": {
+      "docs": [
+        {
+          "path": "references/jianying-voice-ai-edit.md",
+          "sections": [
+            "4 导出后校时与必要的本地整理",
+            "5 验收与恢复"
+          ]
+        },
+        "references/script-subtitles.md"
+      ],
+      "rules": [
+        "MEASURED_AUDIO"
+      ],
+      "checks": [
+        "audio_and_measured_timing"
+      ]
+    },
+    "srt": {
+      "docs": [
+        "references/script-subtitles.md"
+      ],
+      "rules": [
+        "SUBTITLES"
+      ],
+      "checks": [
+        "subtitle_structure_and_source"
+      ]
+    },
+    "rough_edit": {
+      "docs": [
+        {
+          "path": "references/AI视频制作SOP.md",
+          "sections": [
+            "阶段6：AI粗剪与画面语义配对"
+          ]
+        },
+        "references/production-data-contract.md",
+        "references/remotion-production-qa.md",
+        "references/production-constraints.md"
+      ],
+      "rules": [
+        "REALTIME",
+        "SEMANTICS"
+      ],
+      "checks": [
+        "recording_speed_and_semantics"
+      ]
+    },
+    "motion_sound_plan": {
+      "docs": [
+        "references/motion-library-workflow.md",
+        "references/text-motion-sound-grammar.md"
+      ],
+      "rules": [
+        "SHOTCRAFT"
+      ],
+      "checks": [
+        "cards_sources_sound_coverage"
+      ]
+    },
+    "polish": {
+      "docs": [
+        "references/visual-direction.md",
+        "references/fonts.md",
+        "references/production-constraints.md",
+        "references/remotion-production-qa.md"
+      ],
+      "rules": [
+        "VISUAL"
+      ],
+      "checks": [
+        "visual_and_protection"
+      ]
+    },
+    "review": {
+      "docs": [
+        "references/remotion-production-qa.md"
+      ],
+      "rules": [
+        "REVIEW"
+      ],
+      "checks": [
+        "actual_review_scope"
+      ]
+    },
+    "export": {
+      "docs": [
+        "references/export-audio-reliability.md",
+        {
+          "path": "references/remotion-production-qa.md",
+          "sections": [
+            "8. 透明和成片导出"
+          ]
+        }
+      ],
+      "rules": [
+        "EXPORT"
+      ],
+      "checks": [
+        "export_file_validation"
+      ]
+    },
+    "delivery": {
+      "docs": [
+        "assets/交付验收与复盘模板.md"
+      ],
+      "rules": [
+        "DELIVERY"
+      ],
+      "checks": [
+        "delivery_scope_and_remaining"
+      ]
+    }
+  },
+  "rules": {
+    "SCOPE": {
+      "owner": "references/execution-ledger.md",
+      "meaning": "仅执行本轮范围，登记最新约束和保护项"
+    },
+    "FACTS": {
+      "owner": "references/production-data-contract.md",
+      "meaning": "真实素材与主张证据"
+    },
+    "SCRIPT": {
+      "owner": "references/internet-copywriting.md",
+      "meaning": "按素材选择正文、钩子与引导，保护定稿"
+    },
+    "WHOLE_TEXT": {
+      "owner": "references/jianying-voice-ai-edit.md",
+      "meaning": "完整文稿只进入一个朗读文本片段"
+    },
+    "ONE_GENERATION": {
+      "owner": "references/jianying-ui-recipe.md",
+      "meaning": "单文本一次朗读，实际导出完整声音"
+    },
+    "MEASURED_AUDIO": {
+      "owner": "references/jianying-voice-ai-edit.md",
+      "meaning": "真实音频定轴，必要时本地整理，不重复变速"
+    },
+    "SUBTITLES": {
+      "owner": "references/script-subtitles.md",
+      "meaning": "最终显示字幕按语义分句，结构与时间来源可查"
+    },
+    "REALTIME": {
+      "owner": "references/remotion-production-qa.md",
+      "meaning": "录屏不慢放，无循环伪造操作"
+    },
+    "SEMANTICS": {
+      "owner": "references/remotion-production-qa.md",
+      "meaning": "完整意思后切，声画关系可解释"
+    },
+    "SHOTCRAFT": {
+      "owner": "references/motion-library-workflow.md",
+      "meaning": "读真实卡片与准确源码，全片覆盖并落实"
+    },
+    "VISUAL": {
+      "owner": "references/visual-direction.md",
+      "meaning": "高级UI质感、统一字型和荧光组件、实际加载"
+    },
+    "REVIEW": {
+      "owner": "references/remotion-production-qa.md",
+      "meaning": "实际动态与听审分层取证"
+    },
+    "EXPORT": {
+      "owner": "references/export-audio-reliability.md",
+      "meaning": "目标短样、真实容器、时间戳与解码"
+    },
+    "DELIVERY": {
+      "owner": "assets/交付验收与复盘模板.md",
+      "meaning": "所有本轮约束闭环，完成层级表述准确"
+    }
+  },
+  "features": {
+    "fonts": {
+      "stages": [
+        "polish"
+      ],
+      "docs": [
+        "references/fonts.md"
+      ]
+    },
+    "neon": {
+      "stages": [
+        "polish"
+      ],
+      "docs": [
+        "assets/style-references/neon-title.tokens.json"
+      ]
+    },
+    "text_motion": {
+      "stages": [
+        "motion_sound_plan",
+        "polish"
+      ],
+      "docs": [
+        "references/text-motion-sound-grammar.md"
+      ]
+    },
+    "transparent": {
+      "stages": [
+        "polish",
+        "export"
+      ],
+      "docs": [
+        "references/export-audio-reliability.md"
+      ]
+    },
+    "publishing": {
+      "stages": [
+        "delivery"
+      ],
+      "docs": [
+        "references/writing-and-publishing.md"
+      ]
+    },
+    "engine_remotion": {
+      "stages": [
+        "inventory",
+        "rough_edit",
+        "polish",
+        "export"
+      ],
+      "docs": [
+        "@remotion"
+      ]
+    },
+    "engine_hyperframes": {
+      "stages": [
+        "inventory",
+        "rough_edit",
+        "polish",
+        "export"
+      ],
+      "docs": [
+        "@hyperframes",
+        "@hyperframes-cli"
+      ]
+    },
+    "source_processing": {
+      "stages": [
+        "inventory",
+        "rough_edit"
+      ],
+      "docs": [
+        "@video-use"
+      ]
+    },
+    "shotcraft": {
+      "stages": [
+        "motion_sound_plan",
+        "polish"
+      ],
+      "docs": [
+        "@shotcraft"
+      ]
+    }
+  },
+  "external_skills": {
+    "hyperframes": {
+      "skill_name": "hyperframes"
+    },
+    "hyperframes-cli": {
+      "skill_name": "hyperframes-cli"
+    },
+    "video-use": {
+      "skill_name": "video-use"
+    },
+    "remotion": {
+      "skill_name": "remotion-best-practices"
+    },
+    "shotcraft": {
+      "skill_name": "video-shotcraft"
+    }
+  }
+}
