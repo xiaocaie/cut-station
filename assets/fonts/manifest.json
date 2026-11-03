@@ -1,0 +1,63 @@
+{
+  "downloaded_at": "2026-10-23",
+  "fonts": [
+    {
+      "name": "Smiley Sans",
+      "zh_name": "得意黑",
+      "file": "SmileySans-Oblique.ttf",
+      "web_file": "SmileySans-Oblique.ttf.woff2",
+      "license_file": "SmileySans-OFL.txt",
+      "version": "v2.0.1",
+      "source": "https://github.com/atelier-anchor/smiley-sans/releases/tag/v2.0.1",
+      "download": "https://github.com/atelier-anchor/smiley-sans/releases/download/v2.0.1/smiley-sans-v2.0.1.zip",
+      "roles": [
+        "hook",
+        "title",
+        "emphasis",
+        "short captions"
+      ],
+      "license": "SIL Open Font License 1.1",
+      "file_sha256": "b447d7e781f08bc95c4c9f23ba71ed2b8ebb639aa7184485c71c4ca5afcd25c4",
+      "file_bytes": 2629764,
+      "web_file_sha256": "731f22973349404b15a88a99ef3b5dd4104c0965c23b7e485c1f11e84fea99e2",
+      "web_file_bytes": 1150924,
+      "license_file_sha256": "9401f4050f1b66c26b6ccdc8b0e14a3c1cc37aac122eda84386f25854a9bec72",
+      "license_file_bytes": 4422
+    },
+    {
+      "name": "Noto Sans SC",
+      "zh_name": "Noto Sans SC（简体中文无衬线）",
+      "file": "NotoSansSC-Variable.ttf",
+      "license_file": "NotoSansSC-OFL.txt",
+      "version": "e7db6ca603fd4862010383ff17ffd6cc4ffac1c0",
+      "source": "https://github.com/google/fonts/tree/e7db6ca603fd4862010383ff17ffd6cc4ffac1c0/ofl/notosanssc",
+      "roles": [
+        "body",
+        "dense UI",
+        "captions"
+      ],
+      "license": "SIL Open Font License 1.1",
+      "file_sha256": "a3041811a78c361b1de50f953c805e0244951c21c5bd412f7232ef0d899af0da",
+      "file_bytes": 17772300,
+      "license_file_sha256": "1c05c68c34f9708415aada51f17e1b0092d2cea709bf4a94cd38114f9e73d7d9",
+      "license_file_bytes": 4388
+    },
+    {
+      "name": "Space Grotesk",
+      "zh_name": "Space Grotesk",
+      "file": "SpaceGrotesk-Variable.ttf",
+      "license_file": "SpaceGrotesk-OFL.txt",
+      "version": "e7db6ca603fd4862010383ff17ffd6cc4ffac1c0",
+      "source": "https://github.com/google/fonts/tree/e7db6ca603fd4862010383ff17ffd6cc4ffac1c0/ofl/spacegrotesk",
+      "roles": [
+        "Latin",
+        "numbers"
+      ],
+      "license": "SIL Open Font License 1.1",
+      "file_sha256": "acad6de1fc93436f5c0f1f4137751ef04f1aea3063e7036535970ffcfbd79f72",
+      "file_bytes": 136676,
+      "license_file_sha256": "564ce565c371c5e5bbf286006565a7c9aa55a9f56e7ca58d56e05d649dd61a72",
+      "license_file_bytes": 4495
+    }
+  ]
+}
