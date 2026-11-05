@@ -124,6 +124,7 @@
     "script": {
       "docs": [
         "references/internet-copywriting.md",
+        "references/copywriting-library.md",
         {
           "path": "references/script-subtitles.md",
           "sections": [
@@ -229,7 +230,9 @@
     "motion_sound_plan": {
       "docs": [
         "references/motion-library-workflow.md",
-        "references/text-motion-sound-grammar.md"
+        "references/text-motion-sound-grammar.md",
+        "references/quality-gates.md",
+        "quality-requirements.json"
       ],
       "rules": [
         "SHOTCRAFT"
@@ -243,7 +246,9 @@
         "references/visual-direction.md",
         "references/fonts.md",
         "references/production-constraints.md",
-        "references/remotion-production-qa.md"
+        "references/remotion-production-qa.md",
+        "references/quality-gates.md",
+        "quality-requirements.json"
       ],
       "rules": [
         "VISUAL"
@@ -254,7 +259,12 @@
     },
     "review": {
       "docs": [
-        "references/remotion-production-qa.md"
+        "references/remotion-production-qa.md",
+        "references/quality-gates.md",
+        "quality-requirements.json",
+        "references/visual-direction.md",
+        "references/text-motion-sound-grammar.md",
+        "references/production-data-contract.md"
       ],
       "rules": [
         "REVIEW"
@@ -271,7 +281,9 @@
           "sections": [
             "8. 透明和成片导出"
           ]
-        }
+        },
+        "references/quality-gates.md",
+        "quality-requirements.json"
       ],
       "rules": [
         "EXPORT"
@@ -282,7 +294,9 @@
     },
     "delivery": {
       "docs": [
-        "assets/交付验收与复盘模板.md"
+        "assets/交付验收与复盘模板.md",
+        "references/quality-gates.md",
+        "quality-requirements.json"
       ],
       "rules": [
         "DELIVERY"
@@ -307,11 +321,11 @@
     },
     "WHOLE_TEXT": {
       "owner": "references/jianying-voice-ai-edit.md",
-      "meaning": "完整文稿只进入一个朗读文本片段"
+      "meaning": "完整定稿默认单文本；仅按有依据的单次上限分少量语义长块"
     },
     "ONE_GENERATION": {
       "owner": "references/jianying-ui-recipe.md",
-      "meaning": "单文本一次朗读，实际导出完整声音"
+      "meaning": "整段或每个授权长块单次朗读，真实导出并按原序合并连续声音"
     },
     "MEASURED_AUDIO": {
       "owner": "references/jianying-voice-ai-edit.md",
@@ -450,6 +464,24 @@
     },
     "shotcraft": {
       "skill_name": "video-shotcraft"
+    }
+  },
+  "quality_gate": {
+    "catalog": "quality-requirements.json",
+    "protocol": "references/quality-gates.md",
+    "visual_modes": [
+      "full",
+      "preview",
+      "edit",
+      "font_only"
+    ],
+    "submitted_check_status": "submitted",
+    "stage_states": {
+      "motion_sound_plan": "plan_validated",
+      "polish": "evidence_ready",
+      "review": "independently_reviewed",
+      "export": "technical_verified",
+      "delivery": "review_ready"
     }
   }
 }

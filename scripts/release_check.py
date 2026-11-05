@@ -2,6 +2,7 @@
 """Offline package checks, with redacted findings. Not a complete privacy/rights audit."""
 import hashlib
 import json
+import math
 from pathlib import Path
 import re
 import sys
@@ -20,7 +21,9 @@ def inspect(root=ROOT):
         "private_chat_link": re.compile(r"https?://(?:chatgpt\.com|chat\.openai\.com)/(?:s|c)/[A-Za-z0-9_-]{8,}|codex://(?:threads|chat)/"),
         "credential_signature": re.compile(r"\b(?:gh[pousr]_[A-Za-z0-9]{25,}|github_pat_[A-Za-z0-9_]{25,}|sk-(?:proj-)?[A-Za-z0-9_-]{28,}|AKIA[A-Z0-9]{16})\b|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
     }
-    required = ["SKILL.md", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "recommended-skills.json", "workflow-manifest.json"]
+    required = ["SKILL.md", "README.md", "LICENSE", "THIRD_PARTY_NOTICES.md", "recommended-skills.json", "workflow-manifest.json",
+                "quality-requirements.json", "scripts/quality_gate.py", "references/quality-gates.md",
+                "assets/copywriting/library.json", "assets/copywriting/sources.md", "references/troubleshooting.md"]
     for name in required:
         if not (root / name).is_file():
             errors.append({"file":name,"check":"required_file_missing"})
@@ -28,6 +31,8 @@ def inspect(root=ROOT):
     files = [p for p in root.rglob("*") if p.is_file() and not any(part in ignored for part in p.relative_to(root).parts)]
     for path in files:
         rel = str(path.relative_to(root))
+        if path.relative_to(root).parts[0] == "private":
+            errors.append({"file":rel,"check":"private_directory_in_release"})
         if path.is_symlink():
             errors.append({"file":rel,"check":"symlink_not_permitted_in_release"})
         if path.name in (".DS_Store", ".env", ".cut-station-setup.json") or path.name.startswith(".env.") or path.suffix == ".pyc":
@@ -89,6 +94,19 @@ def inspect(root=ROOT):
                     if not set(item["sections"]).issubset(headings):
                         errors.append({"file":item["path"],"check":"missing_required_section"})
         except (ValueError,KeyError,TypeError): errors.append({"file":"workflow-manifest.json","check":"invalid_manifest"})
+    try:
+        quality = json.loads((root / "quality-requirements.json").read_text(encoding="utf-8"))
+        if quality["schema_version"] != 1 or not quality.get("boundary") or not quality["review_criteria"]: raise ValueError()
+        for key, criterion in quality["review_criteria"].items():
+            if not re.fullmatch(r"[a-z][a-z_]+",key) or not criterion.get("requirement"): raise ValueError()
+            source = (root / criterion["source"].split("#",1)[0]).resolve()
+            if not source.is_relative_to(root) or not source.is_file(): raise ValueError()
+        limit = quality["limits"]["full_min_distinct_implemented_cards"]
+        hold = quality["limits"]["minimum_settled_seconds"]
+        if type(limit) is not int or limit < 2 or type(hold) not in (int,float) or not math.isfinite(hold) or hold < .5: raise ValueError()
+        contract = json.loads(manifest_path.read_text(encoding="utf-8"))["quality_gate"]
+        if contract["catalog"] != "quality-requirements.json" or contract["protocol"] != "references/quality-gates.md" or contract["submitted_check_status"] != "submitted": raise ValueError()
+    except (OSError,ValueError,KeyError,TypeError): errors.append({"file":"quality-requirements.json","check":"invalid_quality_contract"})
     try:
         catalog = json.loads((root / "recommended-skills.json").read_text(encoding="utf-8"))["projects"]
         if set(catalog) != {"hyperframes","video-use","remotion","shotcraft"}: raise ValueError()

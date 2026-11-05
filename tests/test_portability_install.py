@@ -100,7 +100,9 @@ class PortableRoutesTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as temporary:
             root=Path(temporary); entry=root/".claude/skills/remotion-best-practices/SKILL.md"
             entry.parent.mkdir(parents=True);entry.write_text("synthetic skill",encoding="utf-8")
-            with patch.dict(os.environ,{"CUT_STATION_SKILL_PATHS":""}):
+            # Model an actual foreign installation; the current host's sibling
+            # skills must not contaminate this discovery fixture.
+            with patch.dict(os.environ,{"CUT_STATION_SKILL_PATHS":""}), patch.object(skill_paths,"__file__",str(root/".claude/skills/cut-station/scripts/skill_paths.py")):
                 self.assertEqual(skill_paths.resolve_skill("remotion",home=root),entry.resolve())
                 self.assertEqual(skill_paths.resolve_skill("remotion",override=entry.parent),entry.resolve())
                 with self.assertRaises(ValueError): skill_paths.resolve_skill("remotion",override=root/"missing")

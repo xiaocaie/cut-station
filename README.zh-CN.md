@@ -51,3 +51,11 @@ python3 scripts/release_check.py
 ```
 
 项目素材/台账放在仓库外。公开上传前执行 [发布检查](references/public-release.md)，并保留字体许可及第三方来源说明。
+
+视觉制作采用 [真实渲染取证与独立审查](references/quality-gates.md)：制作方提交证据，不能自行填写视觉verified；所用镜头卡、动态主段和逐项标准都须落实。程序检查不证明审美或实际听审，review_ready也不代表用户已验收。局部路线不扩展为未经请求的整片或配音。
+
+## 完整钩子库与问题处理
+
+[公开文字库](assets/copywriting/library.json)收录364条句式、96条例子和8类方法，保留来源署名与ID；[选句/填词规则](references/copywriting-library.md)只替换原省略号，用户指定成句则逐字采用。第三方原句不自动适用代码MIT。个人校准和本期项目路径仍不公开。
+
+[问题恢复与工程索引](references/troubleshooting.md)说明字体回落、裁切越界、备注对应、辅助提示局部删除、播放器与导出问题。已证实单次字数限制支持带依据的语义长块配音；未遇上限仍默认整段。视觉门禁拒绝自填verified，绑定当前渲染与独立审查，用户明确删除辅助标识时记录范围和依据。

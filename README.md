@@ -36,6 +36,8 @@ Ask your agent, for example:
 
 Jianying desktop TTS is **optional**. The agent explains the installed-app/control requirement and voice/account limits before using it. You may provide audio, export manually, or skip it entirely. Other agents need their own supported desktop controls; a Codex-specific API is never assumed.
 
+Visual production uses [computed render evidence and independent review](references/quality-gates.md). Creators submit evidence; they cannot mark their own visual work verified. Card implementation, applicable dynamic sections and all review criteria must be addressed. Machine checks do not prove aesthetics or actual listening, and review-ready is distinct from user acceptance. Partial routes do not acquire unrequested video or narration steps.
+
 ## What is portable
 
 Standard SKILL.md + relative references; Python 3.9+ helpers; optional rendering through an available engine. FFmpeg/ffprobe are needed for media checks. Recommended tools have separate runtime and license requirements. Hosts without local files/shell cannot run local production.
@@ -52,3 +54,9 @@ python3 scripts/release_check.py
 On Windows use the host's Python command and set environment variables using its shell syntax. Put real project media/state outside this repository. The helper tests use synthetic fixtures and actual tiny generated media where FFmpeg is available; they do not operate Jianying or invoke paid APIs. CI configuration is included; a local pass does not mean hosted CI has run.
 
 For changes, run tests and the offline package checker, and describe actual viewing/listening limits. Follow the [public-release guide](references/public-release.md). [MIT](LICENSE) covers original public instructions/helpers; bundled fonts retain OFL and upstream projects/assets retain their own terms. See [third-party notices](THIRD_PARTY_NOTICES.md).
+
+## Recovery and reusable copy
+
+The [complete hook text corpus](assets/copywriting/library.json) includes 364 patterns, 96 examples and eight methods, with source attribution and stable IDs. [Select and fill](references/copywriting-library.md) only the original ellipses; a supplied finished hook stays verbatim. Third-party source text does not inherit the code MIT license.
+
+[Recovery and artifact paths](references/troubleshooting.md) covers actual font/crop failures, narrow overlay edits, player/export diagnosis and a relative project-index template. Confirmed per-request narration limits support evidenced semantic chunks; the default remains complete-text narration. Current-render evidence and independent review replace creator-assigned visual verified. User-directed removal of auxiliary still labels is scoped and evidence-bound.
