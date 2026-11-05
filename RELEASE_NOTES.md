@@ -1,5 +1,6 @@
 # Unreleased — evidence-bound reviews and reusable production recovery
 
+- The display name is now Xiaocaie Cut Station (小菜蛾剪辑工坊). The skill identifier remains `cut-station`.
 - Visual submission, current-render evidence and independent per-criterion/per-card/dynamic review replace creator-assigned visual success. Stale versions, open findings, missing implementation and a different delivery video are rejected.
 - Publish the complete user-requested text hook corpus with attribution, public/personal library selection and ellipsis-only filling. Original screenshots and project media are excluded.
 - Confirmed per-request text limits can produce a few semantic narration chunks, with source/evidence hashes, exact text reconstruction, bounded Unicode counts and protected output paths. Existing audio remains reusable.
@@ -10,7 +11,7 @@ These changes add helper/regression checks. They do not certify agent understand
 
 # 0.1.0-rc.1 — public release candidate
 
-Prepared on 2026-11-03. The confirmed name is CutStation, with skill identifier cut-station and subtitle AI video editing skill. The name is not a claim of an exclusive or cleared brand.
+Prepared on 2026-11-03. This release candidate used the name CutStation, with skill identifier cut-station and subtitle AI video editing skill. The name is not a claim of an exclusive or cleared brand.
 
 ## Included changes
 

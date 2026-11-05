@@ -1,4 +1,4 @@
 interface:
-  display_name: "CutStation"
+  display_name: "Xiaocaie Cut Station · 小菜蛾剪辑工坊"
   short_description: "Source-grounded video editing with optional narration and verified delivery"
   default_prompt: "Use $cut-station to produce or edit a video from the actual brief and source material. Explain optional skill installation and narration, preserve approved edits, select available tools, and report actual validation boundaries."

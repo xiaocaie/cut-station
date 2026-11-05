@@ -6,7 +6,7 @@ metadata:
   version: "0.1.0-rc.1"
 ---
 
-# CutStation
+# Xiaocaie Cut Station · 小菜蛾剪辑工坊
 
 Turn real footage and a clear brief into an editable, reviewable video. This is an agent workflow with local helpers, not a bundled editor or a guarantee of identical output across models.
 
