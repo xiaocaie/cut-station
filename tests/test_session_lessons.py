@@ -6,6 +6,8 @@ import json
 from pathlib import Path
 import sys
 import tempfile
+import shutil
+import subprocess
 import unittest
 from unittest.mock import patch
 
@@ -74,6 +76,31 @@ class BoundedVoiceTests(unittest.TestCase):
             part=root/'voice.part-01.txt';part.write_text('keep',encoding='utf-8')
             with patch.object(sys,'argv',['prepare_voice_text',str(source),str(output),'--max-chars','500','--limit-source','user','--limit-evidence',str(evidence)]),contextlib.redirect_stderr(io.StringIO()):self.assertEqual(voice.main(),1)
             self.assertFalse(output.exists());self.assertEqual(part.read_text(),'keep')
+
+
+class FontCheckoutTests(unittest.TestCase):
+    @unittest.skipUnless(shutil.which('git'), 'Git is required for the actual checkout regression')
+    def test_font_license_bytes_survive_windows_style_checkout(self):
+        package=SCRIPTS.parent
+        data=json.loads((package/'assets/fonts/manifest.json').read_text(encoding='utf-8'))
+        with tempfile.TemporaryDirectory() as tmp:
+            root=Path(tmp);source=root/'source';dest=root/'checkout';source.mkdir();hooks=root/'empty-hooks';hooks.mkdir()
+            (source/'.gitattributes').write_bytes((package/'.gitattributes').read_bytes())
+            (source/'assets/fonts').mkdir(parents=True)
+            names=[]
+            for font in data['fonts']:
+                name='assets/fonts/'+font['license_file'];names.append(name)
+                shutil.copyfile(package/name,source/name)
+            def git(*args):
+                return subprocess.run(['git',*map(str,args)],cwd=source,check=True,capture_output=True)
+            git('init','-q');git('config','core.autocrlf','true');git('config','core.hooksPath',hooks)
+            git('add','--','.gitattributes',*names)
+            git('-c','user.name=Synthetic Test','-c','user.email=synthetic@example.invalid','-c','commit.gpgsign=false','commit','-qm','Synthetic byte preservation')
+            git('clone','-q','--no-local','--config','core.autocrlf=true',source,dest)
+            for font in data['fonts']:
+                name='assets/fonts/'+font['license_file'];actual=(dest/name).read_bytes()
+                self.assertEqual(actual,(package/name).read_bytes(),name)
+                self.assertEqual(hashlib.sha256(actual).hexdigest(),font['license_file_sha256'])
 
 
 class PublicCopyTests(unittest.TestCase):
