@@ -1,3 +1,13 @@
+# Unreleased — evidence-bound reviews and reusable production recovery
+
+- Visual submission, current-render evidence and independent per-criterion/per-card/dynamic review replace creator-assigned visual success. Stale versions, open findings, missing implementation and a different delivery video are rejected.
+- Publish the complete user-requested text hook corpus with attribution, public/personal library selection and ellipsis-only filling. Original screenshots and project media are excluded.
+- Confirmed per-request text limits can produce a few semantic narration chunks, with source/evidence hashes, exact text reconstruction, bounded Unicode counts and protected output paths. Existing audio remains reusable.
+- Explicit user removal of auxiliary still labels is recorded separately from authentic static-reading identity and bound to instruction evidence.
+- Recovery recipes and a relative artifact-index template preserve narrow edits, approved content and honest viewing/listening boundaries. Cover production keeps its requested style and verified actual ratio.
+
+These changes add helper/regression checks. They do not certify agent understanding, a sandbox, arbitrary narration quotas, continuous listening or cross-host full-film equivalence. Local project evidence and exact production paths remain private.
+
 # 0.1.0-rc.1 — public release candidate
 
 Prepared on 2026-11-03. The confirmed name is CutStation, with skill identifier cut-station and subtitle AI video editing skill. The name is not a claim of an exclusive or cleared brand.

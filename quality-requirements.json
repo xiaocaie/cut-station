@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "review_criteria": {
+    "composition": {
+      "source": "references/visual-direction.md#2-构图与内容占比",
+      "requirement": "主体与真实操作够大，完整上下文，大面积留白和无信息标签不合格"
+    },
+    "material_and_hierarchy": {
+      "source": "references/visual-direction.md#3-背景与材质",
+      "requirement": "实际材质、空间受光、排版层级与统一色彩；装了字体或铺渐变不能代替视觉质量"
+    },
+    "readability": {
+      "source": "references/visual-direction.md#4-字型与三级层级",
+      "requirement": "实际像素可读、无截字遮挡、字幕安全区、手机缩略图和完整阅读预算"
+    },
+    "motion_coverage": {
+      "source": "references/visual-direction.md#8-镜头卡与丝滑转场",
+      "requirement": "多种准确镜头卡落实于多个适用主段，实际运动语法及转场连贯，不能用单标题卡加通用淡入替代"
+    },
+    "semantics_and_pacing": {
+      "source": "references/remotion-production-qa.md#6-完整意思优先的镜头节奏",
+      "requirement": "真实输入到结果的完整意思；实录1x，无操作倒退、闪切或冻结冒充连续操作"
+    },
+    "sound_and_protection": {
+      "source": "references/text-motion-sound-grammar.md#第一性原理先给注意力分配职责",
+      "requirement": "保护定稿和原声音，声画事件对应，声音验收按实际范围记录，未听不能声称听审"
+    },
+    "authenticity_and_privacy": {
+      "source": "references/production-data-contract.md",
+      "requirement": "真实页面和成品，不伪造产品功能，静帧/示意标识明确，敏感信息不泄露；用户明确移除辅助提示时绑定覆盖依据并保留真实来源身份"
+    }
+  },
+  "limits": {
+    "full_min_distinct_implemented_cards": 2,
+    "minimum_settled_seconds": 0.5
+  },
+  "boundary": "文件和取帧有效性由程序计算；审美与播放观察由独立审查者逐项判断，身份仍属代理声明。此本地脚本不隔离工具，不宣称无法被恶意手改绕过。"
+}

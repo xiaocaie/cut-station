@@ -19,9 +19,16 @@ import sys
 import time
 import uuid
 from skill_paths import resolve_skill
+import quality_gate
+import prepare_voice_text
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "workflow-manifest.json"
+
+
+def implementation_hash():
+    return digest(Path(__file__).read_bytes() + Path(quality_gate.__file__).read_bytes()
+                  + quality_gate.CATALOG.read_bytes() + Path(prepare_voice_text.__file__).read_bytes())
 
 
 def digest(data):
@@ -134,17 +141,22 @@ def preserved(state):
 
 def fresh(state, stage, manifest):
     item = state["stages"].get(stage, {})
-    if item.get("status") != "verified":
+    expected_state = quality_gate.STAGE_STATES[stage] if quality_gate.applies(state, stage) else "verified"
+    if item.get("status") != expected_state:
         raise ValueError(f"前置阶段未通过：{stage}")
     if not item.get("report_path") or not item.get("file_snapshots"):
         raise ValueError(f"阶段缺少实际出口报告：{stage}")
     if item.get("pack_signature") != pack_signature(state, stage, manifest):
         raise ValueError(f"规范版本已变化，需重新核验：{stage}")
-    if item.get("implementation_sha256") != file_hash(Path(__file__)):
+    if item.get("implementation_sha256") != implementation_hash():
         raise ValueError(f"门禁实现已更新，需重新核验：{stage}")
     for path, expected in item.get("file_snapshots", {}).items():
         if file_hash(path) != expected:
             raise ValueError(f"阶段证据或产物变化：{stage} {path}")
+    if quality_gate.applies(state, stage):
+        if item.get("quality_context") != quality_gate.context_signature(state, stage):
+            raise ValueError(f"质量方案/当前渲染/独立审查已换版，需重新提交阶段出口：{stage}")
+        quality_gate.stage_evidence(state, stage, load(item["report_path"]))
 
 
 def prerequisites(state, stage, manifest):
@@ -207,16 +219,7 @@ def validate_artifact(artifact, state):
     if path.suffix.lower() == ".json":
         data = load(path)
         if role == "voice_input":
-            if (data.get("mode"), data.get("text_object_count"), data.get("planned_generation_count")) != ("whole_paragraph", 1, 1):
-                raise ValueError("配音输入必须整段、单文本、一次生成")
-            if any(type(data.get(k)) is not int for k in ("text_object_count", "planned_generation_count")):
-                raise ValueError("文本对象数与生成次数必须是整数，不能用布尔值代替")
-            text_file = Path(data["text_file"])
-            text = text_file.read_text(encoding="utf-8")
-            if "\n" in text or "\r" in text or digest(text.encode()) != data["text_sha256"]:
-                raise ValueError("整段文稿文件与清单不一致")
-            if file_hash(data["source"]) != data["source_sha256"]:
-                raise ValueError("配音输入对应的源稿已经改变")
+            prepare_voice_text.validate_input_files(data)
             lock = state.get("script_lock", {})
             if str(Path(data["source"]).resolve()) != lock.get("path") or data["source_sha256"] != lock.get("sha256"):
                 raise ValueError("配音输入不是当前锁定稿件")
@@ -292,9 +295,13 @@ def finish_stage(state, stage, report_path, manifest):
     required = list(manifest["stages"][stage]["checks"])
     required += [c["id"] for c in state.get("constraints", []) if stage in c.get("stages", [])]
     snapshots = {str(Path(report_path).resolve()): file_hash(report_path)}
+    visual = quality_gate.applies(state, stage)
     for check_id in required:
         check = checks.get(check_id, {})
-        if check.get("status") != "verified" or not check.get("evidence") or len(check.get("note", "").strip()) < 8:
+        submitted_state = "submitted" if visual else "verified"
+        if check.get("status") != submitted_state or not check.get("evidence") or len(check.get("note", "").strip()) < 8:
+            if visual and check.get("status") == "verified":
+                raise ValueError("视觉阶段禁止制作方自填verified；提交证据，由程序和独立逐项审查决定")
             raise ValueError(f"缺少实际验收证据：{check_id}")
         for path in check["evidence"]:
             snapshots[str(Path(path).resolve())] = file_hash(path)
@@ -307,6 +314,9 @@ def finish_stage(state, stage, report_path, manifest):
             snapshots[str(Path(artifact["manifest"]).resolve())] = file_hash(artifact["manifest"])
         if artifact.get("role") in ("voice_input", "timing"):
             data = load(path)
+            if artifact.get("role") == "voice_input":
+                for target in prepare_voice_text.validate_input_files(data):
+                    snapshots[str(target.resolve())] = file_hash(target)
             for key in ("text_file", "source", "audio_source"):
                 if data.get(key):
                     target = str(Path(data[key]).resolve())
@@ -315,11 +325,15 @@ def finish_stage(state, stage, report_path, manifest):
     needed_role = {"voice_input": "voice_input", "jianying_voice": "audio", "audio_timing": "timing", "srt": "srt", "rough_edit": "timeline", "export": "video"}.get(stage)
     if needed_role and needed_role not in roles:
         raise ValueError(f"缺少阶段产物：{needed_role}")
+    if visual:
+        snapshots.update(quality_gate.stage_evidence(state, stage, report))
     preserved(state)
-    item.update(status="verified", pack_signature=signature, file_snapshots=snapshots,
+    result_state = quality_gate.STAGE_STATES[stage] if visual else "verified"
+    item.update(status=result_state, pack_signature=signature, file_snapshots=snapshots,
                 report_path=str(Path(report_path).resolve()),
-                artifacts=artifacts, implementation_sha256=file_hash(Path(__file__)))
-    event(state, "stage_verified", stage=stage, report=str(Path(report_path).resolve()))
+                artifacts=artifacts, implementation_sha256=implementation_hash(),
+                quality_context=quality_gate.context_signature(state, stage) if visual else None)
+    event(state, "stage_evaluated", stage=stage, result=result_state, report=str(Path(report_path).resolve()))
 
 
 def main():
@@ -357,6 +371,15 @@ def main():
     p = sub.add_parser("revise")
     p.add_argument("--from-stage", required=True)
     p.add_argument("--reason", required=True)
+    p = sub.add_parser("quality-plan")
+    p.add_argument("--plan", type=Path, required=True)
+    p.add_argument("--creator-id", required=True)
+    p = sub.add_parser("quality-evidence")
+    p.add_argument("--video", type=Path, required=True)
+    p.add_argument("--out", type=Path, required=True)
+    p = sub.add_parser("quality-review")
+    p.add_argument("--report", type=Path, required=True)
+    p.add_argument("--reviewer-id", required=True)
     sub.add_parser("resume")
     sub.add_parser("summary")
     args = parser.parse_args()
@@ -382,7 +405,7 @@ def main():
                 skill_paths[key] = str(resolve_skill(key, override=value))
             features = [x for x in args.features.split(",") if x]
             if any(f not in manifest["features"] for f in features): raise ValueError("未知条件资料特性")
-            state = {"schema_version": 2, "project": str(state_path.parent), "mode": args.mode, "voice": args.voice,
+            state = {"schema_version": 3, "project": str(state_path.parent), "mode": args.mode, "voice": args.voice,
                      "enforcement": "cooperative_local_gate", "epoch": uuid.uuid4().hex,
                      "route": route, "features": features, "script_review_required": args.script_review_required,
                      "subtitles": args.subtitles, "skill_paths": skill_paths,
@@ -391,7 +414,7 @@ def main():
             event(state, "init", mode=args.mode, voice=args.voice)
         else:
             state = load(state_path)
-            if state.get("schema_version") != 2: raise ValueError("旧台账先按执行协议迁移，不自动预填通过")
+            if state.get("schema_version") != 3: raise ValueError("旧台账不能沿用自报视觉通过；先保留原件，为当前授权范围建立v3状态并重核相关证据")
         cmd, output = args.command, None
         if hasattr(args, "stage") and args.stage not in state["route"]: raise ValueError("阶段不在本轮范围")
         if cmd == "plan":
@@ -457,9 +480,41 @@ def main():
             resolve_doc(args.path,manifest,state)
             state["extra_docs"].setdefault(args.stage, []).append({"path": args.path})
             event(state, "conditional_doc_required", stage=args.stage, path=args.path, reason=args.reason)
+        elif cmd == "quality-plan":
+            preserved(state)
+            stage = "motion_sound_plan" if "motion_sound_plan" in state["route"] else "polish"
+            plan = load(args.plan)
+            selected = {str(Path(card[key]).resolve()) for card in plan.get("cards", []) for key in ("card", "implementation")}
+            packet_paths = {p["path"] for p in packets(state, stage, manifest)}
+            if selected - packet_paths:
+                raise ValueError("选定镜头卡/准确实现必须先require进本阶段并完整读取：" + ", ".join(sorted(selected - packet_paths)))
+            ensure_read(state, stage, manifest)
+            binding = quality_gate.design(state, args.plan, args.creator_id)
+            state["quality"] = {"design": binding}
+            event(state, "quality_plan_validated", plan=str(args.plan.resolve()), cards=binding["card_ids"])
+            output = {"status": "plan_validated", "cards": binding["card_ids"], "not_proven": ["actual implementation", "aesthetic quality"]}
+        elif cmd == "quality-evidence":
+            preserved(state)
+            receipt = quality_gate.collect(state, args.video, args.out)
+            state["quality"]["evidence"] = receipt
+            state["quality"].pop("review", None)
+            event(state, "quality_evidence_computed", **receipt)
+            output = {"status": "evidence_ready", **receipt, "not_proven": ["aesthetics", "actual viewing/listening"]}
+        elif cmd == "quality-review":
+            preserved(state)
+            receipt = quality_gate.review(state, args.report, args.reviewer_id)
+            state["quality"]["review"] = receipt
+            event(state, "independent_quality_review_registered", **receipt)
+            output = {"status": "independently_reviewed", **receipt, "not_proven": ["user acceptance", "unobserved playback/listening", "unforgeable reviewer identity"]}
         elif cmd == "revise":
             index = state["route"].index(args.from_stage)
             for stage in state["route"][index:]: state["stages"].pop(stage,None)
+            if args.from_stage in ("intake", "inventory", "script", "rough_edit", "motion_sound_plan"):
+                state.pop("quality", None)
+            elif args.from_stage == "polish" and state.get("quality"):
+                state["quality"].pop("evidence", None); state["quality"].pop("review", None)
+            elif args.from_stage == "review" and state.get("quality"):
+                state["quality"].pop("review", None)
             if args.from_stage in ("intake", "inventory", "script"): state.pop("script_lock",None)
             event(state, "dependent_stages_invalidated", from_stage=args.from_stage, reason=args.reason)
         elif cmd == "resume":
@@ -471,7 +526,7 @@ def main():
                 try:
                     prerequisites(state,stage,manifest)
                     fresh(state,stage,manifest)
-                    status, reason = "verified", ""
+                    status, reason = state["stages"][stage]["status"], ""
                 except ValueError as exc: status, reason = "pending_or_stale", str(exc)
                 results.append({"stage":stage,"status":status,"reason":reason})
             output = {"enforcement":"cooperative_local_gate", "stages":results,

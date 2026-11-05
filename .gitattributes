@@ -6,3 +6,6 @@
 *.yml text eol=lf
 *.ttf binary
 *.woff2 binary
+
+# License hashes cover original bytes, including upstream line endings.
+assets/fonts/*-OFL.txt -text

@@ -1,0 +1,29 @@
+{
+  "schema_version": 1,
+  "project_root": ".",
+  "approved_revision": "v1",
+  "artifacts": {
+    "approved_script": "inputs/script-final.json",
+    "source_inventory": "inputs/source-inventory.json",
+    "original_voice": "audio/voice-approved.wav",
+    "voice_chunks": "audio/voice-input.voice-input.json",
+    "measured_timing": "captions/timing-measured.json",
+    "subtitles": "captions/final.srt",
+    "editable_project": "edit/remotion",
+    "video": "deliverables/tutorial.mov",
+    "delivery_manifest": "deliverables/delivery-manifest.json",
+    "workflow": "workflow.json",
+    "quality_package": "evidence/quality/package.json",
+    "independent_review": "evidence/independent-review.json",
+    "export_validation": "evidence/export-validation.json",
+    "cover": "deliverables/cover-4x3.png",
+    "cover_prompt": "evidence/cover-prompt.txt"
+  },
+  "protected_files": {},
+  "observations": {
+    "continuous_visual": "not_executed",
+    "continuous_audio": "not_executed",
+    "user_accepted": false
+  },
+  "boundary": "Fill with actual artifacts and hashes; paths, statuses and file existence do not prove acceptance or viewing/listening. Keep the filled project index outside public releases."
+}

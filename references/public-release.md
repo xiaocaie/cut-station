@@ -17,6 +17,8 @@ Use a clean GitHub repository or upload this directory's contents. SKILL.md belo
 
 Keep project outputs/logs/credentials out of Git using .gitignore, but do not treat .gitignore as a privacy filter: it does not clean tracked files, old history, manual web uploads or release attachments. Review the actual staged file list and selected upload folder. Do not run an unreviewed `git add .` in the parent workspace.
 
+Local installations may contain `private/copywriting-library/`, the user's third-party writing references and extraction. Exclude the whole private/ directory from a public copy or archive. This repository separately includes the user-requested, sanitized text corpus in assets/copywriting/ with source attribution; this explicit inclusion does not authorize publishing other private corpora, original screenshots, personal calibration or project logs. Third-party source text does not inherit the code MIT license. Review actual staged paths, not just ignore rules.
+
 ## Licensing and claims
 
 MIT applies to this package's original public instructions/helpers. Bundled fonts retain OFL. Four recommended upstream projects are not vendored or relicensed; they are independently downloaded after consent. External renderer, sound, image and service terms remain applicable. Verify redistribution rights before adding any new asset. No company/client intellectual property is licensed by this file.

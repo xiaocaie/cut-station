@@ -1,0 +1,5161 @@
+{
+  "schema_version": 1,
+  "purpose": "可检索的中文钩子与标题句式库；严格只替换原句省略号",
+  "provenance": "用户提供图片；不是效果数据或已验证的领域事实",
+  "license_scope": "按用户明确要求随仓库公开文字库；保留第三方来源署名，代码MIT不自动适用于第三方原句；不包含原图、个人校准或项目证据",
+  "normalization": "校正OCR断行、错字；统一省略号与部分标点；省略装饰emoji，不增加未提供条目",
+  "sources": [
+    {
+      "file": "IMG_2729.WEBP",
+      "sha256": "7607e6dec7dc2ad7e48dffda96e69db30ced9cc8493d2ad3764ba0a984e9e435",
+      "visible_watermark": "抖音号：46883003250",
+      "role": "templates"
+    },
+    {
+      "file": "IMG_2730.WEBP",
+      "sha256": "76a3c9b516fa295cbd6bb7075d7229e0e92a7def59e1e199a777393501081e25",
+      "visible_watermark": "抖音号：46883003250",
+      "role": "templates"
+    },
+    {
+      "file": "IMG_2731.WEBP",
+      "sha256": "33e75c2508e6bf942b53e72a678e48de561e5d66121a74f2642904bf65f4baa7",
+      "visible_watermark": "抖音号：46883003250",
+      "role": "templates"
+    },
+    {
+      "file": "IMG_2732.WEBP",
+      "sha256": "ef85e1903dfe96d20c0d933d52e283b64f0c6822bd5bf2a4ce2780f71013a47a",
+      "visible_watermark": "抖音号：46883003250",
+      "role": "methods"
+    },
+    {
+      "file": "IMG_2733.WEBP",
+      "sha256": "3bb71b182fbf3451bf2ab4863de840c2fcd5e45860f48a46e3e7e564c6edde2b",
+      "visible_watermark": "抖音号：46883003250",
+      "role": "methods"
+    },
+    {
+      "file": "IMG_2734.WEBP",
+      "sha256": "8c7a500a4409cf436143b69e464b9c164afe53dcacd3a4b29741445cdda84833",
+      "visible_watermark": "抖音号：46883003250",
+      "role": "examples"
+    },
+    {
+      "file": "IMG_2735.WEBP",
+      "sha256": "15c99cedcdbd2cd2ab60541fdd6331b29921295a5ab73ec02e2ba9993b7ab3f1",
+      "visible_watermark": "抖音号：46883003250",
+      "role": "examples"
+    },
+    {
+      "file": "IMG_2736.WEBP",
+      "sha256": "845193e26b38dda8a7024ab72710ef09657ab55f357722bf5221d593f73d42c4",
+      "visible_watermark": "抖音号：46883003250",
+      "role": "examples"
+    },
+    {
+      "file": "IMG_2737.WEBP",
+      "sha256": "c1ebaf72b91c99125f69cba093b4fd3d4816920ede792b88aacc5f0bbe894186",
+      "visible_watermark": "抖音号：46883003250",
+      "role": "examples"
+    }
+  ],
+  "methods": [
+    {
+      "id": "M01",
+      "name": "痛点提问式",
+      "patterns": [
+        "……的痛，谁懂？",
+        "你是不是也……？"
+      ],
+      "original_example": "洗完脸紧绷到笑的痛，谁懂？",
+      "original_analysis": "直击一个具体、微小的痛苦瞬间，引起共鸣。",
+      "apply_when": "已知具体卡点时选用，后文尽快给出可执行解法。"
+    },
+    {
+      "id": "M02",
+      "name": "数字盘点式",
+      "patterns": [
+        "X个……，让你……",
+        "……必看的X个技巧"
+      ],
+      "original_example": "3个动作，让我腿围瘦了2cm！",
+      "original_analysis": "数字量化价值，结果具体可期，显得干货满满。",
+      "apply_when": "清单数量按正文实际计数；效果、耗时和比例另需依据。"
+    },
+    {
+      "id": "M03",
+      "name": "对比冲突式",
+      "patterns": [
+        "……前vs后",
+        "别再……了！试试……"
+      ],
+      "original_example": "无效护肤vs有效护肤，钱都白花了！",
+      "original_analysis": "制造认知冲突，颠覆常识，吸引用户寻求答案。",
+      "apply_when": "有真实可比对象或前后结果时使用，说明比较条件。"
+    },
+    {
+      "id": "M04",
+      "name": "人群锁定式",
+      "patterns": [
+        "所有……人，刷到就是赚到！",
+        "……人必看"
+      ],
+      "original_example": "所有油痘肌姐妹，锁死这个护肤流程！",
+      "original_analysis": "精准点名目标人群，让对方感觉跟他有关。",
+      "apply_when": "把人群换成当前任务的具体观众，下一句给同一任务的收益。"
+    },
+    {
+      "id": "M05",
+      "name": "结果承诺式",
+      "patterns": [
+        "只需……，就能……",
+        "跟着我做，保证……"
+      ],
+      "original_example": "只需10分钟，搞定让人心动的约会妆！",
+      "original_analysis": "强调低成本和确定性结果，降低行动门槛。",
+      "apply_when": "展示已得到的真实结果；耗时、保证和轻松等表述按本次证据改写。"
+    },
+    {
+      "id": "M06",
+      "name": "颠覆认知式",
+      "patterns": [
+        "……的人都错了！",
+        "原来……的真相，竟然是……"
+      ],
+      "original_example": "90%的人防晒都白涂了！正确姿势在这。",
+      "original_analysis": "挑战普遍认知，制造信息差，激发好奇与求知欲。",
+      "apply_when": "保留有依据的认知差；原例的比例和健康结论不直接迁移。"
+    },
+    {
+      "id": "M07",
+      "name": "场景代入式",
+      "patterns": [
+        "当……时，我就用这招……",
+        "……怎么办？亲测有效"
+      ],
+      "original_example": "周一上班犯困怎么办？这5个提神技巧亲测有效！",
+      "original_analysis": "说一个高频具体场景，解决方案立刻显得实用。",
+      "apply_when": "使用观众正在做的真实任务，亲测和第一人称经历需对应来源。"
+    },
+    {
+      "id": "M08",
+      "name": "情绪惊叹式",
+      "patterns": [
+        "绝了！……也太……了吧！",
+        "救命！我真的会……"
+      ],
+      "original_example": "绝了！这个懒人焖饭也太好吃了吧！",
+      "original_analysis": "使用高强度情绪词和网络热梗，感染力极强。",
+      "apply_when": "按作者语气选用，惊叹后立刻交代具体发现和可见证据。"
+    }
+  ],
+  "counts": {
+    "templates": 364,
+    "examples": 96,
+    "methods": 8,
+    "exact_duplicate_templates": 3,
+    "source_visible_rows": {
+      "IMG_2729.WEBP": 128,
+      "IMG_2730.WEBP": 127,
+      "IMG_2731.WEBP": 109,
+      "IMG_2734.WEBP": 24,
+      "IMG_2735.WEBP": 24,
+      "IMG_2736.WEBP": 24,
+      "IMG_2737.WEBP": 24
+    }
+  },
+  "entries": [
+    {
+      "id": "H2729-A-01",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 1,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "你是不是也感觉……？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-02",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 2,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "有没有人跟我一样，一……就头大？",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-A-03",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 3,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "为什么你总是……？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-04",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 4,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "别再……了！真的会……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-05",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 5,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "是谁还在……？我不说。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-A-06",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 6,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "如果你也……，请一定要看完这篇。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-07",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 7,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "是不是总觉得……？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-08",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 8,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "为什么别人……，而你却……？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-09",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 9,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "受够了……的日子！",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-10",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 10,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "……的痛，谁懂啊？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-11",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 11,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "你是不是试了很多方法，还是……？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-12",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 12,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "一……就焦虑？试试这个办法。",
+      "conditions": [
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "H2729-A-13",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 13,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "不会只有我到现在才知道……吧？",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-A-14",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 14,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "关于……，90%的人都做错了。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2729-A-15",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 15,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "求求你别再……了！",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-16",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 16,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "自从……，我的幸福指数飙升！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-A-17",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 17,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "……真的救我狗命！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-A-18",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 18,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "真后悔没早点发现这个……方法！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-A-19",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 19,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "如果早点看到这篇，我就不会……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-A-20",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 20,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "我发现了……的终极奥秘！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-A-21",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 21,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "3个……的秘密，尤其最后一个！",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-22",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 22,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "学会这5招，轻松……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-23",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 23,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "关于……，看这一篇就够了！",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-24",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 24,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "分享我的……宝藏，第X个绝了！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-A-25",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 25,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "10个……小技巧，简单又实用。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-26",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 26,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "让我……的4个习惯。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-A-27",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 27,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "这8个……网站，让你效率翻倍。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2729-A-28",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 28,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "总结了3个……的步骤，超详细！",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-29",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 29,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "5件……好物，最低只要X元！",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2729-A-30",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 30,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "建议……的人都收藏这7个要点。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-31",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 31,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "1个公式，搞定所有……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-32",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 32,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "4步教你从0到1学会……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-33",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 33,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "盘点那些……的TOP3。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-34",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 34,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "7天……计划，跟着做就行！",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "H2729-A-35",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 35,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "花了XX元，总结出的X条……经验。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2729-A-36",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 36,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "3个迹象，说明你正在……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-37",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 37,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "5个……的错误认知，你中了几个？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-38",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 38,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "1分钟，教你学会……",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "H2729-A-39",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 39,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "这10个……建议，越早明白越好。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-A-40",
+      "source": "IMG_2729.WEBP",
+      "column": 1,
+      "row": 40,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "只用了2周，我靠这3个方法……",
+      "conditions": [
+        "时长/周期需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-01",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 1,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "我发现了……的隐藏功能！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-02",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 2,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "别再……了！其实根本没用。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-03",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 3,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "关于……，可能和你想的完全不一样。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-04",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 4,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "原来……这么简单？我以前都做错了。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-05",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 5,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "你敢信？我居然用……解决了……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-06",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 6,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "90%的人都误解了……",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2729-B-07",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 7,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "……的尽头，居然是……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-08",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 8,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "揭秘……行业不敢说的实话。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-09",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 9,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "没想到……还能这么玩！",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-10",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 10,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "警告！这样……只会越来越糟。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-11",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 11,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "推翻你对……的固有认知。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-12",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 12,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "一个被严重低估的……方法。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-13",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 13,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "说出来你可能不信，我靠……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-14",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 14,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "……的底层逻辑，其实就三点。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-15",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 15,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "怪不得你……，原来是因为……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-16",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 16,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "是时候告诉你……的真相了。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-17",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 17,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "这个方法……，居然没人知道？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-18",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 18,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "我发现了让……事半功倍的秘诀！",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-19",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 19,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "警惕！……的这3个坑，踩一个就完蛋。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-20",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 20,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "把……说得很复杂的人，都是在……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-21",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 21,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "用这个方法，我一周涨粉XXXX！",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-22",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 22,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "跟着我做，轻松搞定……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-23",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 23,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "从0到XX万，我只做了这一件事。",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-24",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 24,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "亲测有效！这个方法让我……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-25",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 25,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "懒人必备！X天就能……",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "H2729-B-26",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 26,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "毫不费力，就能……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-27",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 27,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "普通人也能轻松上手的……教程。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-28",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 28,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "这样做……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-29",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 29,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "谁懂啊！真的很讨厌……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-30",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 30,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "是不是只有我一个人觉得……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-31",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 31,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "如果你也……，请一定要看完这篇！",
+      "conditions": [],
+      "duplicate_of": "H2729-A-06"
+    },
+    {
+      "id": "H2729-B-32",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 32,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "被……困扰了好多年，直到我发现……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-33",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 33,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "求求了！所有……的姐妹都去看！",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-34",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 34,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "曾经的我……，现在的我……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-35",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 35,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "别再……了！真的会……",
+      "conditions": [],
+      "duplicate_of": "H2729-A-04"
+    },
+    {
+      "id": "H2729-B-36",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 36,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "关于……，我踩过的坑你们就别踩了。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-37",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 37,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "血泪教训！因为……我差点……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-38",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 38,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "有没有人跟我一样，一……就……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-39",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 39,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "我宣布，这就是……的天花板！",
+      "conditions": [
+        "个人经历需来源",
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2729-B-40",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 40,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "都202X年了，不会还有人……吧？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-B-41",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 41,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "自从学会了……，我的生活爽翻了！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-42",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 42,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "救了大命！这个方法让我再也不……",
+      "conditions": [
+        "个人经历需来源",
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2729-B-43",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 43,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "关于……，我有一个不成熟的小建议。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-B-44",
+      "source": "IMG_2729.WEBP",
+      "column": 2,
+      "row": 44,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "警惕！这些……的习惯正在毁掉你。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-01",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 1,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "如果早点看到这篇，我也不会……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-C-02",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 2,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "坦白局：说说你在……上吃过的亏。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-03",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 3,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "破防了！原来这么多年……都做错了。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-04",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 4,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "快检查一下你的……是不是也这样！",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-05",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 5,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "后悔没早刷到！……的终极解决方案。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-C-06",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 6,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "家人们，……的痛谁懂？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-07",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 7,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "建议所有……的人都收藏这篇。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-08",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 8,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "千万不要……！否则你会……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-09",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 9,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "花了……钱买来的教训，免费分享。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2729-C-10",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 10,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "亲身经历告诉你，……到底有多重要。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-C-11",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 11,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "如果你正为……而烦恼，这篇能救你。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-12",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 12,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "一学就会！解决……的保姆级教程。",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-13",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 13,
+      "kind": "template",
+      "category": "痛点提问式",
+      "text": "告别……！从我做起。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-C-14",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 14,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "震惊！原来……的背后真相是……",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-15",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 15,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "想知道怎么才能……吗？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-16",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 16,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "你还在为……而发愁吗？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-17",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 17,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "有没有人想知道……的秘密？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-18",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 18,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "猜猜我花了多少钱，就……？",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-C-19",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 19,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "如果只能推荐一个……，你会推荐什么？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-20",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 20,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "你们要的……攻略来啦！",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-21",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 21,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "问一下，大家……都是怎么解决的？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-22",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 22,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "很好奇，大家……的时候会……吗？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-23",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 23,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "当你……时，第一个想到的是什么？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-24",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 24,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "假如给你一个机会……，你会愿意吗？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-25",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 25,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "你理想中的……是什么样子的？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-26",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 26,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "有没有……的同款姐妹？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-27",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 27,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "你是怎么做到……的？求分享！",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-28",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 28,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "如果……和……只能选一个，你选谁？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-29",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 29,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "你们觉得……真的有用吗？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-30",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 30,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "一人说一个……的小技巧吧！",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-31",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 31,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "是什么让你决定……？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-32",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 32,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "你经历过最……的事情是什么？",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-C-33",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 33,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "你觉得……值不值得？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-34",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 34,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "快来对号入座！你是哪种……？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-35",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 35,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "你敢信？我竟然用……做到了……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-C-36",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 36,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "想知道我是如何从……到……的吗？",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-C-37",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 37,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "为什么别人……那么容易？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-38",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 38,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "你准备好……了吗？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-39",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 39,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "今天来聊聊一个敏感话题：……？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-40",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 40,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "你们要的……测评来啦！",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-41",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 41,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "有没有人和我一样，觉得……？",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2729-C-42",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 42,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "一个问题：……？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-43",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 43,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "如果有一天……，你会怎么办？",
+      "conditions": []
+    },
+    {
+      "id": "H2729-C-44",
+      "source": "IMG_2729.WEBP",
+      "column": 3,
+      "row": 44,
+      "kind": "template",
+      "category": "互动提问式",
+      "text": "你觉得……最重要的品质是什么？",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-01",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 1,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "建议收藏！……一定要知道的10个技巧。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-02",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 2,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "3个步骤，教你轻松搞定……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-03",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 3,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "5个迹象，说明你该……了。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-04",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 4,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "普通人也能学会的7个……秘籍。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-05",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 5,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "我只用了10分钟，就学会了……",
+      "conditions": [
+        "时长/周期需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-A-06",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 6,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "202X年，我建议你彻底戒掉这5个习惯。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-A-07",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 7,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "看完这8条，你的……水平暴增。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-08",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 8,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "99%的人都不知道的……冷知识。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2730-A-09",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 9,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "1个公式，搞定所有……问题。",
+      "conditions": [
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2730-A-10",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 10,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "花了3万块，总结出的……避坑指南。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2730-A-11",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 11,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "7天，让你的……焕然一新。",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "H2730-A-12",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 12,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "这4件……好物，我能用一辈子。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-A-13",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 13,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "5个……的错误示范，你中了几个？",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-14",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 14,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "10个……的宝藏网站，免费！",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2730-A-15",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 15,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "3招，让你在……领域秒杀90%的人。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2730-A-16",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 16,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "1篇笔记说清……的全部流程。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-17",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 17,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "这6个……的APP，堪称神器。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-18",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 18,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "4个步骤，从0到1学会……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-19",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 19,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "20个……的灵感来源。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-20",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 20,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "只用了2周，我的……发生了翻天覆地的变化。",
+      "conditions": [
+        "时长/周期需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-A-21",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 21,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "盘点5个……的智商税，别再买了！",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-22",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 22,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "1分钟，带你了解……的本质。",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "H2730-A-23",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 23,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "这8个……小习惯，让我脱胎换骨。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-A-24",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 24,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "3个维度，判断你的……是否健康。",
+      "conditions": [
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "H2730-A-25",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 25,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "100个……小技巧，第23个绝了！",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-26",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 26,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "5部电影，让你看懂……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-27",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 27,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "7个……的黄金法则。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-28",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 28,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "1张图，带你理清……的思路。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-29",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 29,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "这12个……的瞬间，让我破防了。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-A-30",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 30,
+      "kind": "template",
+      "category": "数字盘点式",
+      "text": "4种……风格，你是哪一种？",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-31",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 31,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "别傻了！……其实根本没用。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-32",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 32,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "颠覆认知！关于……的真相。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-33",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 33,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "我被骗了好多年！原来……是这样的。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-A-34",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 34,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "行业内幕：……永远不会告诉你的秘密。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-35",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 35,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "99%的人都误解了……的真正含义。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2730-A-36",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 36,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "原来……可以这么简单？我白折腾了。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-A-37",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 37,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "震惊！……竟然还有这种操作？",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-38",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 38,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "重新定义……！你可能一直都想错了。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-39",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 39,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "小心！你追捧的……可能是场骗局。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-A-40",
+      "source": "IMG_2730.WEBP",
+      "column": 1,
+      "row": 40,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "打破信息差！关于……的冷知识。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-01",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 1,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "我发现了……的隐藏功能！",
+      "conditions": [
+        "个人经历需来源"
+      ],
+      "duplicate_of": "H2729-B-01"
+    },
+    {
+      "id": "H2730-B-02",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 2,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "原来有钱人都这么……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-03",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 3,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "老师不会教，但很好用的……方法。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-04",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 4,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "是时候揭开……的神秘面纱了。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-05",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 5,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "你以为的……，其实都是错的。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-06",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 6,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "一个被严重低估的……技巧。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-07",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 7,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "关于……，教科书上不会写的事。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-08",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 8,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "我发现了让……效果翻倍的秘诀！",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-09",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 9,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "这才是……的正确打开方式。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-10",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 10,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "没人敢说的……大实话。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-11",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 11,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "原来……根本不需要……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-12",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 12,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "这个……的思路，让我茅塞顿开。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-13",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 13,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "反向操作：如何通过……达到……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-14",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 14,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "90%的人都不知道的……捷径。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2730-B-15",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 15,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "揭秘！网红们都在用的……方法。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-16",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 16,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "对不起，我要打破你对……的幻想了。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-17",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 17,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "这个……的妙用，绝了！",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-18",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 18,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "你所知道的……知识已经过时了。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-19",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 19,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "一个让所有人眼前一亮的……创意。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-20",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 20,
+      "kind": "template",
+      "category": "颠覆认知式",
+      "text": "我发现了一个……的惊天Bug！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-21",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 21,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "那天我……，结果……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-22",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 22,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "凌晨三点，我因为……哭了出来。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-23",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 23,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "记录一下我是如何用300块搞定……的。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-24",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 24,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "在上海月入3万，却买不起一杯奶茶……",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2730-B-25",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 25,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "结婚3年，老公第一次对我……",
+      "conditions": [
+        "时长/周期需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-26",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 26,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "在地铁上遇到了……，我整个人都傻了。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-27",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 27,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "独居女孩的治愈瞬间：……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-28",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 28,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "考研失利后，我的人生开了挂。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-29",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 29,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "我把……的经历做成了电影截图。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-30",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 30,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "那天阳光很好，我决定……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-31",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 31,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "因为一句话，我爱上了……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-32",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 32,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "失恋第33天，我学会了……",
+      "conditions": [
+        "时长/周期需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-33",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 33,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "我把家改造成了……的样子。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-34",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 34,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "一个……的自白书。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-35",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 35,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "当我和父母说我要……时。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-36",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 36,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "那天，我鼓起勇气……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-37",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 37,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "所有女生，听我说！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-B-38",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 38,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "打工人必看！如何优雅地……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-39",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 39,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "学生党福音！百元内搞定……",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2730-B-40",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 40,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "宝妈看过来！让你轻松……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-41",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 41,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "矮个子女生怎么……？看这篇就够了。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-42",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 42,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "给所有……新手的入门指南。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-43",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 43,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "内向性格的人，如何做好……？",
+      "conditions": []
+    },
+    {
+      "id": "H2730-B-44",
+      "source": "IMG_2730.WEBP",
+      "column": 2,
+      "row": 44,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "懒人必备！3分钟……",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "H2730-C-01",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 1,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "25岁，我辞掉了年薪30万的工作去……",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-C-02",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 2,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "用Vlog记录我……的一天。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-C-03",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 3,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "人生建议：一定要在秋天去……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-04",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 4,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "那天，我偷偷看了妈妈的购物车……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-C-05",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 5,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "如果……有味道，那一定是……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-06",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 6,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "翻到了10年前的照片，感慨……",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "H2730-C-07",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 7,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "我把……做成了手帐。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-C-08",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 8,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "故事的开头是一瓶冰镇汽水……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-09",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 9,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "写给十年后的自己：关于……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-10",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 10,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "我的……治愈清单。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-C-11",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 11,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "当i人（内向者）被迫……时。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-12",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 12,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "第一次……的经历，永生难忘。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-C-13",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 13,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "我的……破产日记。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-C-14",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 14,
+      "kind": "template",
+      "category": "经历叙事式",
+      "text": "用100天，记录我……的变化。",
+      "conditions": [
+        "时长/周期需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-C-15",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 15,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "送给所有……内耗的人。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-16",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 16,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "油痘肌姐妹，这套……流程快抄作业！",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-17",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 17,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "25+的女生，一定要开始……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-18",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 18,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "献给所有不会……的手残党。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-19",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 19,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "大学生如何利用课余时间……？",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-20",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 20,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "上班族通勤如何快速……？",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-21",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 21,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "租房党也能拥有的……幸福感。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-22",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 22,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "送给即将……的你，10条建议。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-23",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 23,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "敏感肌亲测！这招……真的可！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-C-24",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 24,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "烘焙小白零失败的……配方。",
+      "conditions": [
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2730-C-25",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 25,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "献给每一个在……中挣扎的普通人。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-26",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 26,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "出国留学前，没人告诉我的……事。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-C-27",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 27,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "给INFJ人格的……指南。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-28",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 28,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "微胖女孩的……穿搭密码。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-29",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 29,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "新媒体人都在用的……工具。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-30",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 30,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "送给第一次……的你。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-31",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 31,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "30岁后才明白的……道理。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-32",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 32,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "猫奴/狗奴必看！如何给主子……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-33",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 33,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "备考党必备的……提神方法。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-34",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 34,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "送给所有……的恋爱脑。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-35",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 35,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "独居女孩的……安全手册。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-36",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 36,
+      "kind": "template",
+      "category": "人群锁定式",
+      "text": "程序员/设计师的……摸鱼神器。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-37",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 37,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "刷到就是赚到！……的宝藏教程。",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-38",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 38,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "让我看看是谁还不会……？",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-C-39",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 39,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "学会这一招，……再也不求人。",
+      "conditions": [
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2730-C-40",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 40,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "毫不夸张，这个方法让我……效率翻倍。",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2730-C-41",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 41,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "保姆级教程！手把手教你……",
+      "conditions": []
+    },
+    {
+      "id": "H2730-C-42",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 42,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "保证你看完就会的……指南。",
+      "conditions": [
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2730-C-43",
+      "source": "IMG_2730.WEBP",
+      "column": 3,
+      "row": 43,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "我只发一次！……的终极秘籍。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2731-A-01",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 1,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "私藏很久的……秘诀，今天公开。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-A-02",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 2,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "看完这篇，你的……水平能超过80%的人。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2731-A-03",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 3,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "一个视频让你彻底搞懂……",
+      "conditions": []
+    },
+    {
+      "id": "H2731-A-04",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 4,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "简单三步，让你的……焕然一新。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-A-05",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 5,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "从此和……说拜拜！",
+      "conditions": []
+    },
+    {
+      "id": "H2731-A-06",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 6,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "亲测有效！……的7天蜕变计划。",
+      "conditions": [
+        "时长/周期需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2731-A-07",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 7,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "让你的……好看100倍的小心机。",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2731-A-08",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 8,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "这样做，……想不成功都难。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-A-09",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 9,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "我把……浓缩成了10句话。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2731-A-10",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 10,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "小白也能秒变大神！……速成法。",
+      "conditions": [
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2731-A-11",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 11,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "不花钱，也能搞定……",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2731-A-12",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 12,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "拯救……废片的调色参数来了！",
+      "conditions": []
+    },
+    {
+      "id": "H2731-A-13",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 13,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "坚持30天，效果惊人！",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "H2731-A-14",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 14,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "一招解决你所有的……问题。",
+      "conditions": [
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2731-A-15",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 15,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "让你的……价值翻倍的思维。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2731-A-16",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 16,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "从入门到精通，……看这一篇就够了。",
+      "conditions": [
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2731-A-17",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 17,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "这样做，保证你的……不踩雷。",
+      "conditions": [
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2731-A-18",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 18,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "快速上手！……零基础入门。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-A-19",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 19,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "让你的……变得高级的秘诀。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-A-20",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 20,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "轻松搞定……的万能公式。",
+      "conditions": [
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2731-A-21",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 21,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "这是我用过最有效的……方法。",
+      "conditions": [
+        "个人经历需来源",
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2731-A-22",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 22,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "实现……自由的攻略。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-A-23",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 23,
+      "kind": "template",
+      "category": "结果承诺式",
+      "text": "照着做，你也能成为……高手。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-A-24",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 24,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "快冲！……马上就要没了！",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-25",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 25,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "抓紧收藏！这篇笔记可能很快会没。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-26",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 26,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "限时优惠！……的羊毛不薅就亏了。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-27",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 27,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "再晚就来不及了！现在开始……",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-28",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 28,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "最后一个名额！……",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-29",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 29,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "明天就涨价！现在入手……最划算。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-30",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 30,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "这个……的方法，知道的人还不多。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-31",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 31,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "错过等一年！……的最佳时机到了。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-32",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 32,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "内部消息：……马上就要……",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-33",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 33,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "我只告诉你一个人……",
+      "conditions": [
+        "个人经历需来源",
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-34",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 34,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "手慢无！……的隐藏福利。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-35",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 35,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "趁着还没火，赶紧去……",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-36",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 36,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "这可能是关于……最全的一篇了。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-A-37",
+      "source": "IMG_2731.WEBP",
+      "column": 1,
+      "row": 37,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "月底就删！……的独家资源。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-01",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 1,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "紧急通知！所有……的人注意！",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-02",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 2,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "再不……就真的晚了。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-03",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 3,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "这个bug价，不知道能维持多久。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-04",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 4,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "第一批……的人已经赚翻了。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-05",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 5,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "风靡全网的……，我终于搞到手了。",
+      "conditions": [
+        "个人经历需来源",
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-06",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 6,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "趁着周末，赶紧把……做了。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-07",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 7,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "今天是……的最后一天！",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-08",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 8,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "这个秘密，我只保留24小时。",
+      "conditions": [
+        "时长/周期需核实",
+        "个人经历需来源",
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-09",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 9,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "再不下单，快递就停了。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-10",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 10,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "全网首发！……",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-11",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 11,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "听说这个……马上就要断货了。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-12",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 12,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "现在入手……，正是时候。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-13",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 13,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "这个……的机会，千载难逢。",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-14",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 14,
+      "kind": "template",
+      "category": "时效稀缺式",
+      "text": "趁着年轻，一定要……",
+      "conditions": [
+        "真实期限/库存/活动才可用"
+      ]
+    },
+    {
+      "id": "H2731-B-15",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 15,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "绝了！这是什么神仙……！",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-16",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 16,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "救命！……怎么可以这么好用！",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-17",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 17,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "啊啊啊我发现了……的天花板！",
+      "conditions": [
+        "个人经历需来源",
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2731-B-18",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 18,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "封神！这个……直接封神！",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-19",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 19,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "离谱！……也太……了吧！",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-20",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 20,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "哭死！……怎么会这么感人！",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-21",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 21,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "笑不活了！关于……的搞笑事实。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-22",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 22,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "太燃了！看完我想马上……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2731-B-23",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 23,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "惊掉下巴！……的真相竟然是……",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-24",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 24,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "暴风哭泣！这个……也太好哭了！",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-25",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 25,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "真香警告！一开始我是拒绝的……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2731-B-26",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 26,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "跪了！这……是我配看的吗？",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2731-B-27",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 27,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "神仙打架！年度最爱……合集。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-28",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 28,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "炸裂！这个……的效果绝了！",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-29",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 29,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "逆天！……还能这么玩？",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-30",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 30,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "疯狂心动！这谁顶得住啊？",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-31",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 31,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "超治愈！瞬间被……暖到了。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-32",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 32,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "太上头了！我已经……停不下来。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2731-B-33",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 33,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "巨好用！回购一万年的……",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-34",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 34,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "惊艳全场！靠这个……我赢了。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2731-B-35",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 35,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "哇塞！这也太……了吧！",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-36",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 36,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "我疯了！居然现在才发现……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2731-B-37",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 37,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "无敌！没有对手的……",
+      "conditions": [
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "H2731-B-38",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 38,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "按头安利！这个……都给我去买！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2731-B-39",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 39,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "直接封顶！……的终极形态。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-40",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 40,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "狂喜！终于让我找到了……",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "H2731-B-41",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 41,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "太顶了！……届的扛把子。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-B-42",
+      "source": "IMG_2731.WEBP",
+      "column": 2,
+      "row": 42,
+      "kind": "template",
+      "category": "情绪惊叹式",
+      "text": "疯狂打Call！为……举大旗！",
+      "conditions": []
+    },
+    {
+      "id": "H2731-C-01",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 1,
+      "kind": "template",
+      "category": "挑战记录式",
+      "text": "挑战全网最……的……",
+      "conditions": []
+    },
+    {
+      "id": "H2731-C-02",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 2,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "100元 vs 1000元的……，区别在哪？",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-03",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 3,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "一个月前vs一个月后，变化惊人！",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-04",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 4,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "我vs我朋友的……，没有对比就没有伤害。",
+      "conditions": [
+        "个人经历需来源",
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-05",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 5,
+      "kind": "template",
+      "category": "挑战记录式",
+      "text": "挑战用最少钱，过最……的生活。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-C-06",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 6,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "国内……vs国外……，差距太大了。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-07",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 7,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "网红款vs冷门款……，谁赢了？",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-08",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 8,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "跟着博主学……，Day 1 vs Day 30。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-09",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 9,
+      "kind": "template",
+      "category": "挑战记录式",
+      "text": "挑战一天只花XX元……",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "H2731-C-10",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 10,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "男朋友vs女朋友的……视角。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-11",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 11,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "平价vs大牌……，是平替还是雷？",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-12",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 12,
+      "kind": "template",
+      "category": "挑战记录式",
+      "text": "挑战用一首歌的时间……",
+      "conditions": []
+    },
+    {
+      "id": "H2731-C-13",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 13,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "十年前vs十年后的……，变化太大了。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-14",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 14,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "我眼中的……vs我妈眼中的……",
+      "conditions": [
+        "个人经历需来源",
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-15",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 15,
+      "kind": "template",
+      "category": "挑战记录式",
+      "text": "挑战30天不……",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "H2731-C-16",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 16,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "原相机vs美颜相机下的……",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-17",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 17,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "新手 vs老手……的区别。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-18",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 18,
+      "kind": "template",
+      "category": "挑战记录式",
+      "text": "挑战给……打分，满分5分。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-C-19",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 19,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "北方 vs南方……的差异。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-20",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 20,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "全网都在夸的……，我来泼盆冷水。",
+      "conditions": [
+        "个人经历需来源",
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-21",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 21,
+      "kind": "template",
+      "category": "挑战记录式",
+      "text": "挑战用一句话证明你……",
+      "conditions": []
+    },
+    {
+      "id": "H2731-C-22",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 22,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "预算1000 vs 预算10000的……攻略。",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-23",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 23,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "跟风买vs自己做功课买……",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-24",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 24,
+      "kind": "template",
+      "category": "挑战记录式",
+      "text": "挑战把……用到空瓶！",
+      "conditions": []
+    },
+    {
+      "id": "H2731-C-25",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 25,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "别人家的……vs我家的……",
+      "conditions": [
+        "个人经历需来源",
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-26",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 26,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "夏天vs冬天的……方式。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-27",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 27,
+      "kind": "template",
+      "category": "挑战记录式",
+      "text": "挑战用最冷门的……做出最棒的效果。",
+      "conditions": []
+    },
+    {
+      "id": "H2731-C-28",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 28,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "化妆前vs 化妆后，换头术揭秘。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-29",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 29,
+      "kind": "template",
+      "category": "对比冲突式",
+      "text": "一个人……vs一群人……",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "H2731-C-30",
+      "source": "IMG_2731.WEBP",
+      "column": 3,
+      "row": 30,
+      "kind": "template",
+      "category": "挑战记录式",
+      "text": "挑战用……做……，能成功吗？",
+      "conditions": []
+    },
+    {
+      "id": "E2734-01",
+      "source": "IMG_2734.WEBP",
+      "row": 1,
+      "kind": "example",
+      "category": "痛点提问式",
+      "text": "早上洗完头下午就油的痛，哪个细软塌懂？！",
+      "conditions": []
+    },
+    {
+      "id": "E2734-02",
+      "source": "IMG_2734.WEBP",
+      "row": 2,
+      "kind": "example",
+      "category": "痛点提问式",
+      "text": "一开会就紧张到声音发抖，你是不是也这样？",
+      "conditions": []
+    },
+    {
+      "id": "E2734-03",
+      "source": "IMG_2734.WEBP",
+      "row": 3,
+      "kind": "example",
+      "category": "痛点提问式",
+      "text": "租房不敢打孔，墙面空荡荡的痛，谁懂？",
+      "conditions": []
+    },
+    {
+      "id": "E2734-04",
+      "source": "IMG_2734.WEBP",
+      "row": 4,
+      "kind": "example",
+      "category": "痛点提问式",
+      "text": "计划表做得很完美，永远做不到的痛，谁懂？",
+      "conditions": []
+    },
+    {
+      "id": "E2734-05",
+      "source": "IMG_2734.WEBP",
+      "row": 5,
+      "kind": "example",
+      "category": "痛点提问式",
+      "text": "和男朋友一吵架就哭，根本吵不赢的痛，谁懂？",
+      "conditions": []
+    },
+    {
+      "id": "E2734-06",
+      "source": "IMG_2734.WEBP",
+      "row": 6,
+      "kind": "example",
+      "category": "痛点提问式",
+      "text": "想吃零食又怕胖，深夜嘴馋的煎熬，谁懂？",
+      "conditions": []
+    },
+    {
+      "id": "E2734-07",
+      "source": "IMG_2734.WEBP",
+      "row": 7,
+      "kind": "example",
+      "category": "痛点提问式",
+      "text": "穿搭博主同款，买回来根本不是那回事的痛！",
+      "conditions": []
+    },
+    {
+      "id": "E2734-08",
+      "source": "IMG_2734.WEBP",
+      "row": 8,
+      "kind": "example",
+      "category": "痛点提问式",
+      "text": "拍照只会比剪刀手，其他姿势僵硬的痛！",
+      "conditions": []
+    },
+    {
+      "id": "E2734-09",
+      "source": "IMG_2734.WEBP",
+      "row": 9,
+      "kind": "example",
+      "category": "痛点提问式",
+      "text": "带娃出门像搬家，手忙脚乱的痛，宝妈都懂！",
+      "conditions": []
+    },
+    {
+      "id": "E2734-10",
+      "source": "IMG_2734.WEBP",
+      "row": 10,
+      "kind": "example",
+      "category": "痛点提问式",
+      "text": "想养宠物，又怕负责一辈子的纠结，谁懂？",
+      "conditions": []
+    },
+    {
+      "id": "E2734-11",
+      "source": "IMG_2734.WEBP",
+      "row": 11,
+      "kind": "example",
+      "category": "痛点提问式",
+      "text": "护肤品用不完就过期，心疼钱包的痛！",
+      "conditions": []
+    },
+    {
+      "id": "E2734-12",
+      "source": "IMG_2734.WEBP",
+      "row": 12,
+      "kind": "example",
+      "category": "痛点提问式",
+      "text": "一到放假就无聊，不知道干嘛的空虛感，谁懂？",
+      "conditions": []
+    },
+    {
+      "id": "E2734-13",
+      "source": "IMG_2734.WEBP",
+      "row": 13,
+      "kind": "example",
+      "category": "数字盘点式",
+      "text": "3个极简存钱习惯，让我一年多存5万！",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "E2734-14",
+      "source": "IMG_2734.WEBP",
+      "row": 14,
+      "kind": "example",
+      "category": "数字盘点式",
+      "text": "油痘肌护肤，记住这4步就够了，真的别瞎折腾！",
+      "conditions": []
+    },
+    {
+      "id": "E2734-15",
+      "source": "IMG_2734.WEBP",
+      "row": 15,
+      "kind": "example",
+      "category": "数字盘点式",
+      "text": "1个万能穿搭公式，搞定80%的上班场合！",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "E2734-16",
+      "source": "IMG_2734.WEBP",
+      "row": 16,
+      "kind": "example",
+      "category": "数字盘点式",
+      "text": "装修避坑！总结了我家最后悔的7个决定。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "E2734-17",
+      "source": "IMG_2734.WEBP",
+      "row": 17,
+      "kind": "example",
+      "category": "数字盘点式",
+      "text": "5个让PPT高级感飙升的小技巧，领导狂夸！",
+      "conditions": []
+    },
+    {
+      "id": "E2734-18",
+      "source": "IMG_2734.WEBP",
+      "row": 18,
+      "kind": "example",
+      "category": "数字盘点式",
+      "text": "10分钟快手早餐合集，健康美味不重样！",
+      "conditions": [
+        "时长/周期需核实",
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2734-19",
+      "source": "IMG_2734.WEBP",
+      "row": 19,
+      "kind": "example",
+      "category": "数字盘点式",
+      "text": "旅途中必下的7个宝藏APP，让你出行无忧。",
+      "conditions": []
+    },
+    {
+      "id": "E2734-20",
+      "source": "IMG_2734.WEBP",
+      "row": 20,
+      "kind": "example",
+      "category": "数字盘点式",
+      "text": "给新手摄影师的5条忠告，少走3年弯路！",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "E2734-21",
+      "source": "IMG_2734.WEBP",
+      "row": 21,
+      "kind": "example",
+      "category": "数字盘点式",
+      "text": "这8件不到50元的家居好物，幸福感拉满！",
+      "conditions": []
+    },
+    {
+      "id": "E2734-22",
+      "source": "IMG_2734.WEBP",
+      "row": 22,
+      "kind": "example",
+      "category": "数字盘点式",
+      "text": "1张图看懂，不同体型怎么选连衣裙！",
+      "conditions": []
+    },
+    {
+      "id": "E2734-23",
+      "source": "IMG_2734.WEBP",
+      "row": 23,
+      "kind": "example",
+      "category": "数字盘点式",
+      "text": "6部治愈系高分电影，适合周末窝在被窝看。",
+      "conditions": []
+    },
+    {
+      "id": "E2734-24",
+      "source": "IMG_2734.WEBP",
+      "row": 24,
+      "kind": "example",
+      "category": "数字盘点式",
+      "text": "4个亲测有效的防脱发习惯，发缝真的密了！",
+      "conditions": [
+        "个人经历需来源",
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2735-01",
+      "source": "IMG_2735.WEBP",
+      "row": 1,
+      "kind": "example",
+      "category": "对比冲突式",
+      "text": "无效收纳vs有效收纳，你家属于哪一种？",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "E2735-02",
+      "source": "IMG_2735.WEBP",
+      "row": 2,
+      "kind": "example",
+      "category": "对比冲突式",
+      "text": "别再乱敷面膜了！这才是补水的正确打开方式。",
+      "conditions": [
+        "对比对象及条件需一致",
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2735-03",
+      "source": "IMG_2735.WEBP",
+      "row": 3,
+      "kind": "example",
+      "category": "对比冲突式",
+      "text": "我喝奶茶vs闺蜜喝奶茶，一个月后差距惊呆了。",
+      "conditions": [
+        "个人经历需来源",
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "E2735-04",
+      "source": "IMG_2735.WEBP",
+      "row": 4,
+      "kind": "example",
+      "category": "对比冲突式",
+      "text": "你画的下至vs博主画的下至，问题出在这儿！",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "E2735-05",
+      "source": "IMG_2735.WEBP",
+      "row": 5,
+      "kind": "example",
+      "category": "对比冲突式",
+      "text": "普通总结vs让老板惊艳的总结，就差这3点。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "E2735-06",
+      "source": "IMG_2735.WEBP",
+      "row": 6,
+      "kind": "example",
+      "category": "对比冲突式",
+      "text": "闷头健身vs科学健身，效果差了一倍不止！",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "E2735-07",
+      "source": "IMG_2735.WEBP",
+      "row": 7,
+      "kind": "example",
+      "category": "对比冲突式",
+      "text": "乱买绘本vs会买绘本，这样选孩子更爱看。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "E2735-08",
+      "source": "IMG_2735.WEBP",
+      "row": 8,
+      "kind": "example",
+      "category": "对比冲突式",
+      "text": "游客照vs旅行大片，拍照秘诀全在这里。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "E2735-09",
+      "source": "IMG_2735.WEBP",
+      "row": 9,
+      "kind": "example",
+      "category": "对比冲突式",
+      "text": "跟风买护肤品vs按需求买，钱要花在刀刃上。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "E2735-10",
+      "source": "IMG_2735.WEBP",
+      "row": 10,
+      "kind": "example",
+      "category": "对比冲突式",
+      "text": "普通煮泡面vs神仙煮泡面，口感天差地别！",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "E2735-11",
+      "source": "IMG_2735.WEBP",
+      "row": 11,
+      "kind": "example",
+      "category": "对比冲突式",
+      "text": "吵架讲情绪vs吵架讲逻辑，关系完全不同。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "E2735-12",
+      "source": "IMG_2735.WEBP",
+      "row": 12,
+      "kind": "example",
+      "category": "对比冲突式",
+      "text": "囤积型护肤vs精准型护肤，后者真的省钱。",
+      "conditions": [
+        "对比对象及条件需一致"
+      ]
+    },
+    {
+      "id": "E2735-13",
+      "source": "IMG_2735.WEBP",
+      "row": 13,
+      "kind": "example",
+      "category": "人群锁定式",
+      "text": "所有小个子女生，这条显高神裤必须冲！",
+      "conditions": []
+    },
+    {
+      "id": "E2735-14",
+      "source": "IMG_2735.WEBP",
+      "row": 14,
+      "kind": "example",
+      "category": "人群锁定式",
+      "text": "打工人通勤必备！5双走路带风又不累的鞋。",
+      "conditions": []
+    },
+    {
+      "id": "E2735-15",
+      "source": "IMG_2735.WEBP",
+      "row": 15,
+      "kind": "example",
+      "category": "人群锁定式",
+      "text": "学生党看过来！百元内平价彩妆宝藏合集。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "E2735-16",
+      "source": "IMG_2735.WEBP",
+      "row": 16,
+      "kind": "example",
+      "category": "人群锁定式",
+      "text": "新手宝妈别焦虑！0-1岁宝宝用品红黑榜。",
+      "conditions": [
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2735-17",
+      "source": "IMG_2735.WEBP",
+      "row": 17,
+      "kind": "example",
+      "category": "人群锁定式",
+      "text": "敏感肌请锁死这个护肤流程，亲测超稳！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "E2735-18",
+      "source": "IMG_2735.WEBP",
+      "row": 18,
+      "kind": "example",
+      "category": "人群锁定式",
+      "text": "租房党福音！百元改造ins风房间攻略。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "E2735-19",
+      "source": "IMG_2735.WEBP",
+      "row": 19,
+      "kind": "example",
+      "category": "人群锁定式",
+      "text": "送给所有“社恐”的社交自救指南，舒服做自己。",
+      "conditions": []
+    },
+    {
+      "id": "E2735-20",
+      "source": "IMG_2735.WEBP",
+      "row": 20,
+      "kind": "example",
+      "category": "人群锁定式",
+      "text": "备考党必存！提升专注力的5个神级方法。",
+      "conditions": []
+    },
+    {
+      "id": "E2735-21",
+      "source": "IMG_2735.WEBP",
+      "row": 21,
+      "kind": "example",
+      "category": "人群锁定式",
+      "text": "微胖女孩穿搭模板，这么穿真的显瘦10斤！",
+      "conditions": [
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2735-22",
+      "source": "IMG_2735.WEBP",
+      "row": 22,
+      "kind": "example",
+      "category": "人群锁定式",
+      "text": "爱熬夜的姐妹，这些内调外养方法快收好！",
+      "conditions": [
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2735-23",
+      "source": "IMG_2735.WEBP",
+      "row": 23,
+      "kind": "example",
+      "category": "人群锁定式",
+      "text": "宠物新手养猫指南，看这一篇就够了！",
+      "conditions": []
+    },
+    {
+      "id": "E2735-24",
+      "source": "IMG_2735.WEBP",
+      "row": 24,
+      "kind": "example",
+      "category": "人群锁定式",
+      "text": "通勤时间长的姐妹，如何利用碎片时间提升？",
+      "conditions": []
+    },
+    {
+      "id": "E2736-01",
+      "source": "IMG_2736.WEBP",
+      "row": 1,
+      "kind": "example",
+      "category": "结果承诺式",
+      "text": "每天10分钟跟练，轻松get女团同款直角肩！",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "E2736-02",
+      "source": "IMG_2736.WEBP",
+      "row": 2,
+      "kind": "example",
+      "category": "结果承诺式",
+      "text": "照这个清单准备，露营一次就能爱上！",
+      "conditions": []
+    },
+    {
+      "id": "E2736-03",
+      "source": "IMG_2736.WEBP",
+      "row": 3,
+      "kind": "example",
+      "category": "结果承诺式",
+      "text": "用这个方法整理手机相册，瞬间多出20G！",
+      "conditions": []
+    },
+    {
+      "id": "E2736-04",
+      "source": "IMG_2736.WEBP",
+      "row": 4,
+      "kind": "example",
+      "category": "结果承诺式",
+      "text": "学会这个沟通模型，保证让伴侣更懂你。",
+      "conditions": [
+        "结果强度按证据改写"
+      ]
+    },
+    {
+      "id": "E2736-05",
+      "source": "IMG_2736.WEBP",
+      "row": 5,
+      "kind": "example",
+      "category": "结果承诺式",
+      "text": "按这个流程做周计划，效率高到惊人。",
+      "conditions": []
+    },
+    {
+      "id": "E2736-06",
+      "source": "IMG_2736.WEBP",
+      "row": 6,
+      "kind": "example",
+      "category": "结果承诺式",
+      "text": "跟着我买，厨房小白也能做出满分年夜饭。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "E2736-07",
+      "source": "IMG_2736.WEBP",
+      "row": 7,
+      "kind": "example",
+      "category": "结果承诺式",
+      "text": "掌握这3个构图法，手机也能拍出摄影大片。",
+      "conditions": []
+    },
+    {
+      "id": "E2736-08",
+      "source": "IMG_2736.WEBP",
+      "row": 8,
+      "kind": "example",
+      "category": "结果承诺式",
+      "text": "坚持这4个睡前仪式，真的能快速入睡！",
+      "conditions": [
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2736-09",
+      "source": "IMG_2736.WEBP",
+      "row": 9,
+      "kind": "example",
+      "category": "结果承诺式",
+      "text": "用这个话术谈加薪，成功率提升90%。",
+      "conditions": [
+        "数字/价格/效果需核实"
+      ]
+    },
+    {
+      "id": "E2736-10",
+      "source": "IMG_2736.WEBP",
+      "row": 10,
+      "kind": "example",
+      "category": "结果承诺式",
+      "text": "试试这个懒人焖饭，一键出锅香到哭！",
+      "conditions": []
+    },
+    {
+      "id": "E2736-11",
+      "source": "IMG_2736.WEBP",
+      "row": 11,
+      "kind": "example",
+      "category": "结果承诺式",
+      "text": "跟着这份攻略玩，云南旅游绝不踩坑。",
+      "conditions": []
+    },
+    {
+      "id": "E2736-12",
+      "source": "IMG_2736.WEBP",
+      "row": 12,
+      "kind": "example",
+      "category": "结果承诺式",
+      "text": "学会这招“挂烫机熨刘海”，三天不洗都蓬松。",
+      "conditions": []
+    },
+    {
+      "id": "E2736-13",
+      "source": "IMG_2736.WEBP",
+      "row": 13,
+      "kind": "example",
+      "category": "颠覆认知式",
+      "text": "你敷的80%的面膜可能都白敷了！",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2736-14",
+      "source": "IMG_2736.WEBP",
+      "row": 14,
+      "kind": "example",
+      "category": "颠覆认知式",
+      "text": "防晒霜不是涂得越多越好！这才是正确用量。",
+      "conditions": [
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2736-15",
+      "source": "IMG_2736.WEBP",
+      "row": 15,
+      "kind": "example",
+      "category": "颠覆认知式",
+      "text": "原来“多喝热水”真的不是敷衍，但有前提！",
+      "conditions": []
+    },
+    {
+      "id": "E2736-16",
+      "source": "IMG_2736.WEBP",
+      "row": 16,
+      "kind": "example",
+      "category": "颠覆认知式",
+      "text": "健身不等于减肥！搞错顺序可能越练越壮。",
+      "conditions": []
+    },
+    {
+      "id": "E2736-17",
+      "source": "IMG_2736.WEBP",
+      "row": 17,
+      "kind": "example",
+      "category": "颠覆认知式",
+      "text": "衣柜里衣服少，反而更容易穿出高级感。",
+      "conditions": []
+    },
+    {
+      "id": "E2736-18",
+      "source": "IMG_2736.WEBP",
+      "row": 18,
+      "kind": "example",
+      "category": "颠覆认知式",
+      "text": "对孩子说“不要哭”，可能是在伤害他。",
+      "conditions": []
+    },
+    {
+      "id": "E2736-19",
+      "source": "IMG_2736.WEBP",
+      "row": 19,
+      "kind": "example",
+      "category": "颠覆认知式",
+      "text": "睡前玩手机，影响的不只是视力。",
+      "conditions": []
+    },
+    {
+      "id": "E2736-20",
+      "source": "IMG_2736.WEBP",
+      "row": 20,
+      "kind": "example",
+      "category": "颠覆认知式",
+      "text": "大多数洗发水广告的柔顺效果，都是假的。",
+      "conditions": []
+    },
+    {
+      "id": "E2736-21",
+      "source": "IMG_2736.WEBP",
+      "row": 21,
+      "kind": "example",
+      "category": "颠覆认知式",
+      "text": "“贵价护肤品”和“平价”的真正区别在这里。",
+      "conditions": []
+    },
+    {
+      "id": "E2736-22",
+      "source": "IMG_2736.WEBP",
+      "row": 22,
+      "kind": "example",
+      "category": "颠覆认知式",
+      "text": "你以为的护眼模式，可能并不能护眼。",
+      "conditions": [
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2736-23",
+      "source": "IMG_2736.WEBP",
+      "row": 23,
+      "kind": "example",
+      "category": "颠覆认知式",
+      "text": "聊天总用“哈哈哈”，可能是社交焦虑。",
+      "conditions": [
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2736-24",
+      "source": "IMG_2736.WEBP",
+      "row": 24,
+      "kind": "example",
+      "category": "颠覆认知式",
+      "text": "存钱的关键不是节俭，而是建立系统。",
+      "conditions": []
+    },
+    {
+      "id": "E2737-01",
+      "source": "IMG_2737.WEBP",
+      "row": 1,
+      "kind": "example",
+      "category": "场景代入式",
+      "text": "临时被通知开会，如何3分钟快速整理发言？",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "E2737-02",
+      "source": "IMG_2737.WEBP",
+      "row": 2,
+      "kind": "example",
+      "category": "场景代入式",
+      "text": "周末突然有朋友要来家做客，如何快速布置？",
+      "conditions": []
+    },
+    {
+      "id": "E2737-03",
+      "source": "IMG_2737.WEBP",
+      "row": 3,
+      "kind": "example",
+      "category": "场景代入式",
+      "text": "当感到焦虑、压力大时，我会马上做这5件事。",
+      "conditions": [
+        "个人经历需来源",
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2737-04",
+      "source": "IMG_2737.WEBP",
+      "row": 4,
+      "kind": "example",
+      "category": "场景代入式",
+      "text": "上班犯困的下午，就靠这杯自制提神饮品续命！",
+      "conditions": []
+    },
+    {
+      "id": "E2737-05",
+      "source": "IMG_2737.WEBP",
+      "row": 5,
+      "kind": "example",
+      "category": "场景代入式",
+      "text": "见家长不知道怎么穿？这套端庄得体不出错！",
+      "conditions": []
+    },
+    {
+      "id": "E2737-06",
+      "source": "IMG_2737.WEBP",
+      "row": 6,
+      "kind": "example",
+      "category": "场景代入式",
+      "text": "长途飞机上，我的包里一定有这几样宝贝。",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "E2737-07",
+      "source": "IMG_2737.WEBP",
+      "row": 7,
+      "kind": "example",
+      "category": "场景代入式",
+      "text": "不小心把红酒洒在白衣上，急救方法在这！",
+      "conditions": []
+    },
+    {
+      "id": "E2737-08",
+      "source": "IMG_2737.WEBP",
+      "row": 8,
+      "kind": "example",
+      "category": "场景代入式",
+      "text": "约会迟到怎么办？这个道歉方式让对方消气。",
+      "conditions": []
+    },
+    {
+      "id": "E2737-09",
+      "source": "IMG_2737.WEBP",
+      "row": 9,
+      "kind": "example",
+      "category": "场景代入式",
+      "text": "当孩子问“妈妈，钱从哪里来”，你会怎么答？",
+      "conditions": []
+    },
+    {
+      "id": "E2737-10",
+      "source": "IMG_2737.WEBP",
+      "row": 10,
+      "kind": "example",
+      "category": "场景代入式",
+      "text": "深夜饿得睡不着？这碗汤圆5分钟搞定。",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "E2737-11",
+      "source": "IMG_2737.WEBP",
+      "row": 11,
+      "kind": "example",
+      "category": "场景代入式",
+      "text": "遇到宠物突然呕吐/拉稀，先别慌，按步骤来。",
+      "conditions": [
+        "领域案例不作事实依据"
+      ]
+    },
+    {
+      "id": "E2737-12",
+      "source": "IMG_2737.WEBP",
+      "row": 12,
+      "kind": "example",
+      "category": "场景代入式",
+      "text": "当你想坚持运动却总放弃时，试试“5分钟法则”。",
+      "conditions": [
+        "时长/周期需核实"
+      ]
+    },
+    {
+      "id": "E2737-13",
+      "source": "IMG_2737.WEBP",
+      "row": 13,
+      "kind": "example",
+      "category": "情绪惊叹式",
+      "text": "绝了！这锅番茄肥牛响铃卷，好吃到舔盘！",
+      "conditions": []
+    },
+    {
+      "id": "E2737-14",
+      "source": "IMG_2737.WEBP",
+      "row": 14,
+      "kind": "example",
+      "category": "情绪惊叹式",
+      "text": "救命！这个免洗头蓬松喷雾真的是油头亲妈！",
+      "conditions": []
+    },
+    {
+      "id": "E2737-15",
+      "source": "IMG_2737.WEBP",
+      "row": 15,
+      "kind": "example",
+      "category": "情绪惊叹式",
+      "text": "啊啊啊！我发现了一个巨好用的电脑分屏软件！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "E2737-16",
+      "source": "IMG_2737.WEBP",
+      "row": 16,
+      "kind": "example",
+      "category": "情绪惊叹式",
+      "text": "笑死！用了我妈的方法，冰箱真的没异味了！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "E2737-17",
+      "source": "IMG_2737.WEBP",
+      "row": 17,
+      "kind": "example",
+      "category": "情绪惊叹式",
+      "text": "哇塞！这套写给内向者的书单，简直是我嘴替！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "E2737-18",
+      "source": "IMG_2737.WEBP",
+      "row": 18,
+      "kind": "example",
+      "category": "情绪惊叹式",
+      "text": "惊艳！百元预算我把出租屋阳台改成小花园！",
+      "conditions": [
+        "数字/价格/效果需核实",
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "E2737-19",
+      "source": "IMG_2737.WEBP",
+      "row": 19,
+      "kind": "example",
+      "category": "情绪惊叹式",
+      "text": "离谱！这碗自制麻酱拌面的味道堪比面馆！",
+      "conditions": []
+    },
+    {
+      "id": "E2737-20",
+      "source": "IMG_2737.WEBP",
+      "row": 20,
+      "kind": "example",
+      "category": "情绪惊叹式",
+      "text": "哭死！这本绘本我和孩子读到嗓子冒烟！",
+      "conditions": [
+        "个人经历需来源"
+      ]
+    },
+    {
+      "id": "E2737-21",
+      "source": "IMG_2737.WEBP",
+      "row": 21,
+      "kind": "example",
+      "category": "情绪惊叹式",
+      "text": "神奇！用牙线辅助画眼线，手残党一次成功！",
+      "conditions": []
+    },
+    {
+      "id": "E2737-22",
+      "source": "IMG_2737.WEBP",
+      "row": 22,
+      "kind": "example",
+      "category": "情绪惊叹式",
+      "text": "宝藏！这个国内小众旅行地，美得像童话！",
+      "conditions": []
+    },
+    {
+      "id": "E2737-23",
+      "source": "IMG_2737.WEBP",
+      "row": 23,
+      "kind": "example",
+      "category": "情绪惊叹式",
+      "text": "服了！这招让Wi-Fi信号满格的方法太简单了！",
+      "conditions": []
+    },
+    {
+      "id": "E2737-24",
+      "source": "IMG_2737.WEBP",
+      "row": 24,
+      "kind": "example",
+      "category": "情绪惊叹式",
+      "text": "爽翻！用Excel管理生活后，一切井井有条！",
+      "conditions": []
+    }
+  ],
+  "publication": "用户明确要求上传钩子库；原图标题的爆款/点击率不是效果证据"
+}

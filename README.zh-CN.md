@@ -1,53 +1,42 @@
 # CutStation · 剪辑站
 
-面向具备本地文件与命令行能力的 AI Agent，按真实素材完成脚本、可选配音、字幕、剪辑包装、预览和导出，也支持只改一个阶段。保护已确认文稿、声音与时间轴，分别记录技术检查和实际观看/听审结果。
+把你的录屏、PPT 和已有旁白交给 Codex 或 Claude Code，剪成一条软件教程、产品演示或讲解视频。你可以先看脚本、改字幕，再看预览；确认后再导出成片。
 
-这是工作流程 skill 与本地辅助脚本。视频渲染引擎和桌面工具需按实际路线准备；公开包不含公司案例、私人截图、内部文档或用户视频。
+[English](README.md)
 
-## 安装
+## 你可以用它做什么
 
-下载解压或克隆仓库后，在仓库根目录运行（Python 3.9+）：
+| 你想做 | 你能拿到 |
+| --- | --- |
+| 有录屏和 PPT，想做一条完整教程 | 可审核的口播稿、配音（可选）、SRT 字幕（有旁白时按实际声音对齐）、剪辑预览和成片。可以加重点标注、动效和音效。 |
+| 先把文案或字幕做好 | 单独交脚本或 SRT。你说先审稿，就等你确认后再配音或剪辑。 |
+| 已经剪好了，只想改一处 | 有原工程时，可以只改指定的字幕、字体、提示文字或片段，保留已经确认的配音和其他内容。 |
+
+开头不知道怎么写，可以从[钩子库](assets/copywriting/library.json)的 364 条句式里选一条，只把省略号换成你的内容。你已经定好的开头，直接沿用。
+
+## 开始使用
+
+**1. 安装。** [下载仓库](https://github.com/xiaocaie/cut-station)或克隆后，在仓库目录里运行与你的 Agent 对应的命令（需要 Python 3.9+）：
 
 ```bash
+# Codex
 python3 scripts/install.py --agent codex
+
+# Claude Code
 python3 scripts/install.py --agent claude-code
 ```
 
-其他 Agent 可指定其实际技能目录：
+安装时可以选装推荐的剪辑和动效 skills，已有的不用重装。其他 Agent 和手动安装方式见[安装说明](references/installation.md)。
 
-```bash
-python3 scripts/install.py --agent generic --dest /absolute/agent/skills
-```
+**2. 给素材，说清楚交付要求。** 把录屏、PPT、旁白文件或原工程的路径发给 Agent，再告诉它想做什么。可以直接复制这句话：
 
-安装器会询问是否安装四个推荐项目：HyperFrames、Video Use、Remotion Agent Skills、Video Shotcraft。可全装、选装或跳过；HyperFrames 的三个官方配套入口会提前列出。已存在的目录不会覆盖。选择推荐项才需要 Git 和联网，下载固定版本的 skill 文件，不运行第三方安装钩子或配置账号。
+> 用 CutStation 把这个文件夹里的录屏和 PPT 剪成一条组会汇报教程。沿用已有旁白，字幕先给我审。确认后再剪，先给我看预览，通过后导出 1080p、60 帧的视频。
 
-无交互环境默认保留“待用户选择”，不会静默全装。明确跳过用 `--recommended none`，明确全装用 `--recommended all`，选装用 `--recommended remotion,shotcraft`。Agent 必须先取得用户选择才能代填。`--dry-run` 只看计划。
+只需要其中一步，也可以直接说「只交 SRT 字幕」「只删右上角这句提示，其他保持原样」或「不要配音，保留原音乐」。
 
-通用 skills 管理器或手动复制不会自动运行本安装器；这种方式安装后，首次调用 skill 时补问依赖。按宿主要求重新扫描/加载。更多见 [安装说明](references/installation.md)。
+## 配音和导出怎么选
 
-## 配音提前说明，可直接跳过
+- **配音**：可以用你现有的音频，也可以用剪映桌面端生成。只做画面时，直接说不需要配音。
+- **预览和成片**：首次剪视频时，让 Agent 检查 FFmpeg 和选用的渲染工具是否可用。未指定格式时，默认导出 **1920×1080、60fps 的 MOV**。想以后自己接着剪，可以一并要可编辑工程。只写脚本时不用准备渲染工具。
 
-需要新旁白时，先说明剪映桌面端整段文本、一次朗读、整轨导出的路线。它需要已安装的应用，以及当前 Agent 的桌面控制工具或用户手动操作；音色、额度和收费条件以账号/版本实际情况为准。
-
-用户可提供已有音频、自己在剪映导出，或完全不要配音。不要配音就不打开剪映、不请求语音服务密钥。字幕可独立跳过；无旁白仍可保留用户同意的音乐和音效。
-
-调用示例：
-
-> 用 cut-station 把这些录屏剪成教程，沿用已有旁白，先交可拖动的预览。
-
-> 用 cut-station 做纯画面演示，不要配音、不要字幕，保留原音乐。
-
-## 兼容性和验证边界
-
-入口采用标准 SKILL.md，脚本不依赖 Codex SDK。其他 Agent 若具备文件、shell、看图/视频与所选渲染能力，可以按同一流程工作。剪映自动化还需该宿主支持桌面控制，不能直接照搬别的宿主 API。
-
-Python 检查通过不等于完整成片通过。当前公开版未完成其他 Agent 的全流程成片对照，不能承诺与 Codex 像素一致或同等审美。见 [兼容性](references/agent-compatibility.md)。
-
-运行测试：
-
-```bash
-python3 -m unittest discover -s tests -v
-python3 scripts/release_check.py
-```
-
-项目素材/台账放在仓库外。公开上传前执行 [发布检查](references/public-release.md)，并保留字体许可及第三方来源说明。
+[使用条件](references/agent-compatibility.md) · [遇到问题](references/troubleshooting.md) · [许可与素材来源](THIRD_PARTY_NOTICES.md)

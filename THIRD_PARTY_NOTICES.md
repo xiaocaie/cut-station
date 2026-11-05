@@ -20,3 +20,7 @@ Original unmodified font files and copyright/license notices are in assets/fonts
 Pinned source revisions and exact entry directories are in recommended-skills.json. Installing text skills does not establish commercial eligibility for a renderer or grant distribution rights for every sound/image. Retain upstream notices when transferring any permitted external asset.
 
 No private company screenshot, internal document, brand asset, chat link or historical reference image is included in this release. The optional neon tokens contain numeric style parameters only.
+
+## User-requested hook text corpus
+
+assets/copywriting/ contains the complete text extraction from nine user-supplied reference screenshots, published at the user's explicit request. The visible attribution is Douyin ID 46883003250. Original screenshots and private project evidence are excluded. These third-party patterns/examples retain their source identity and are not relicensed under the code MIT license. Corpus counts and source hashes are in library.json; promotional claims in examples are not verified outcome data.

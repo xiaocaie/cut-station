@@ -8,7 +8,7 @@
 
 每条用户要求记录 `id / requirement / stages / scope / evidence / supersedes`，保护项按文件/轨道/文本/时间段明确。三条长期硬规始终判断适用范围，只有无相关输出才标不适用并写依据。优先级为最新具体指令→已确认稿件/保护项→技能默认→其他技能通用风格，且服从系统/开发者和真实授权。相冲突的旧要求记录supersedes，不能把某段无音效变成全片永久禁声。
 
-状态：pending / in_progress / verified / blocked / not_applicable。verified必须附实际文件、UI观察、帧号或时间点；未执行不可填通过。用户要求等待审稿时止于对应节点；已有明确继续或全权授权不制造新审批。
+状态包括 pending / in_progress / verified / blocked / not_applicable。full/preview/edit/font_only 的视觉阶段改用 plan_validated / evidence_ready / independently_reviewed / technical_verified / review_ready，制作方只能提交 submitted；见 [视觉证据与独立审查](quality-gates.md)。其他阶段的verified必须附实际文件、UI观察、帧号或时间点；未执行不可填通过。用户要求等待审稿时止于对应节点；已有明确继续或全权授权不制造新审批。
 
 ## 2 四层披露与完整读取
 
@@ -56,7 +56,7 @@ init默认不要求用户审稿，仅在用户已经要求时使用该开关。�
 [{"rule":"SCOPE","action":"本轮只做字体修改，复用当前工程并保护旁白、字幕与时长","verification":"比较保护文件哈希，并检查最长字幕和关键帧的字体加载与遮挡"}]
 ```
 
-阶段出口报告必须含本阶段清单要求的check ID；每项有verified、具体note、实际证据文件路径，附本阶段产物：
+阶段出口报告必须含本阶段清单要求的check ID；每项有状态、具体note、实际证据文件路径，附本阶段产物。下面的intake示例使用verified；视觉阶段的check必须使用submitted，再由程序证据和独立审查决定出口：
 ```json
 {"stage":"intake","checks":[{"id":"scope_and_protected","status":"verified","note":"已按本轮要求确定只改字体，保护项已与当前文件建立基线","evidence":["/absolute/project/brief.json"]}],"artifacts":[{"path":"/absolute/project/brief.json","role":"file"}]}
 ```
@@ -82,8 +82,8 @@ python3 scripts/workflow_guard.py --state /absolute/project/workflow.json summar
 | intake | 最新范围、声音路线、交付规格、用户约束、已确认保护项 |
 | inventory | 素材元数据/关键操作/结果/源时间、主张证据、缺项；仅主题任务注明事实边界 |
 | script | 冻结或待审核身份、正文路线、痛点钩子、承诺兑现、引导与保护项 |
-| voice_input | 冻结稿→一个完整TXT→单对象/一次生成清单，哈希一致 |
-| jianying_voice | 单文本UI、一次朗读、真实连续音轨及实际导出文件 |
+| voice_input | 冻结稿→完整TXT→整段或有依据上限分块清单；逐块文件/顺序/限制证据哈希一致 |
+| jianying_voice | 整段或每个授权长块的单文本UI/一次朗读、真实连续音轨及实际导出文件 |
 | audio_timing | 最终声音、听审范围、实测句轴；无逐句UI排空和二次变速 |
 | srt | 分句/标点/字数/例外、格式检查、时间来源；不把配音用长文本当显示字幕 |
 | rough_edit | 同主题语义配对、完整操作与结果、实际录屏时间映射、无慢放 |
@@ -93,7 +93,7 @@ python3 scripts/workflow_guard.py --state /absolute/project/workflow.json summar
 | export | 目标短样、真实容器/规格/帧数/PTS/解码与实际动态检查 |
 | delivery | 本轮所有约束逐条关闭，文件/工程/范围/剩余项，保护项不破坏 |
 
-阶段报告和证据/产物保存哈希，后续变化不继续沿用verified。保护基线不能用protect重设来掩盖破坏；明确改动保护范围时保存旧版，记录新用户覆盖与新版本。
+阶段报告和证据/产物保存哈希，视觉阶段还绑定当前质量方案、取帧包及独立审查版本，后续变化不继续沿用旧出口。保护基线不能用protect重设来掩盖破坏；明确改动保护范围时保存旧版，记录新用户覆盖与新版本。
 
 ## 6 变更与恢复
 
@@ -104,10 +104,12 @@ python3 scripts/workflow_guard.py --state /absolute/project/workflow.json revise
 python3 scripts/workflow_guard.py --state /absolute/project/workflow.json resume
 ```
 
-revise使该阶段及后续依赖出口失效，不删除真实文件；只重做实际受影响内容。规范哈希变化后原读取/规则决定失效；输入和证据文件变化后旧出口失效。旧台账没有读取凭据时，保留原始证据作为候选，迁移到schema_version=2时从当前阶段所需输入重新核验，不预填已通过，不为建台账盲目重配音。
+revise使该阶段及后续依赖出口失效，不删除真实文件；只重做实际受影响内容。规范哈希变化后原读取/规则决定失效；输入和证据文件变化后旧出口失效。旧台账没有读取凭据时，保留原始证据作为候选，建立schema_version=3状态时从当前阶段所需输入重新核验，不预填已通过，不为建台账盲目重配音。
 
 ## 7 验收与回归
 
 运行 `python3 -m unittest discover -s tests -v` 验证：缺读/错尾标记/缺规则决定/前置未完成拦截；先审稿未确认不配音；单文本输入保留标点；分句TTS清单拒绝；保护项改变、规范/输入改变使旧证据失效；错误SRT/无声或坏媒体/录屏0.99倍拒绝；合法局部任务正常继续。测试检查命令是否真实执行、文件变化和退出结果，不能只匹配Agent生成的措辞。
+
+视觉路线另测：制作方verified/无方案拒绝、卡片全块与当前版本读取、单卡/partial拒绝、逐卡审查缺项拒绝、跨主段/一帧冒充动态观察拒绝、换证据轮次使旧出口失效、未审视频导出拒绝。full/preview无配音无字幕与font_only保护项均须能正常完成范围内路线。
 
 完整成片仍按所用技能要求独立终检；审美、可理解性和实际听感看真实输出。仅文档/脚本回归通过不等于剪映任意长文本、任意音色或整片视听已通过。
