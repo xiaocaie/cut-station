@@ -66,7 +66,7 @@ class GateTests(unittest.TestCase):
                             "artifacts":artifacts or []})
         self.call("exit", "--stage", stage, "--report", report)
 
-    def quality_fixture(self, mode=None, library=True, collect=True):
+    def quality_fixture(self, mode=None, library=True, collect=True, render=True):
         """Real synthetic render plus clearly test-only reading/reviewer fixtures."""
         if mode:
             self.state_file.unlink()
@@ -105,7 +105,8 @@ class GateTests(unittest.TestCase):
         self.fixture_reads(stage)
         self.call("quality-plan", "--plan", self.plan_path, "--creator-id", "synthetic-creator")
         self.video = self.root / "synthetic-render.mp4"
-        subprocess.run(["ffmpeg","-v","error","-y","-f","lavfi","-i","testsrc2=size=64x64:rate=30:duration=2", "-an","-c:v","libx264",str(self.video)],check=True,capture_output=True)
+        if render:
+            subprocess.run(["ffmpeg","-v","error","-y","-f","lavfi","-i","testsrc2=size=64x64:rate=30:duration=2", "-an","-c:v","libx264",str(self.video)],check=True,capture_output=True)
         if collect:
             self.call("quality-evidence", "--video", self.video, "--out", self.root / "evidence")
 
@@ -517,7 +518,7 @@ class GateTests(unittest.TestCase):
         self.assertFalse((self.root/"failed-extraction/package.json").exists())
 
     def test_explicit_user_still_label_override_binds_instruction_file(self):
-        self.quality_fixture(library=False,collect=False)
+        self.quality_fixture(library=False,collect=False,render=False)
         plan=guard.load(self.plan_path);evidence=self.root/'user-instruction.txt'
         evidence.write_text('用户明确要求删除本段静帧提示，正文和来源身份不变',encoding='utf-8')
         plan['sections'][0].update(still=True,still_label_override={'authority':'user','instruction':'用户明确要求删除本段静帧提示','evidence':str(evidence)})
@@ -528,12 +529,12 @@ class GateTests(unittest.TestCase):
         with self.assertRaises(ValueError):quality.unchanged(self.state()['quality']['design']['snapshots'])
 
     def test_unlabeled_still_without_user_override_rejected(self):
-        self.quality_fixture(library=False,collect=False)
+        self.quality_fixture(library=False,collect=False,render=False)
         plan=guard.load(self.plan_path);plan['sections'][0]['still']=True;guard.save(self.plan_path,plan)
         self.call('quality-plan','--plan',self.plan_path,'--creator-id','synthetic-creator',expected=1)
 
     def test_self_approved_or_missing_evidence_still_override_rejected(self):
-        self.quality_fixture(library=False,collect=False)
+        self.quality_fixture(library=False,collect=False,render=False)
         plan=guard.load(self.plan_path)
         for override in [{'authority':'creator','instruction':'我自行决定删除辅助静帧提示','evidence':str(self.engine)},
                          {'authority':'user','instruction':'用户明确要求删除本段静帧提示','evidence':str(self.root/'missing')}]:
