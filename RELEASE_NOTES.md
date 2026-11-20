@@ -1,3 +1,8 @@
+# 0.1.0-rc.2 — adaptive motion and titles
+
+- “使用适合的动效” routes visual production into a source-bound picture and typography decision for every major section. The quality gate checks implemented cards, samples the chosen action windows, and requires independent review of both choices.
+- Reusable Remotion modules implement a level screenshot wall with a foreground sweep, a full-screen-first page gallery, and semantic and numbered titles. All media and text come from the current project.
+
 # Unreleased — evidence-bound reviews and reusable production recovery
 
 - The display name is now Xiaocaie Cut Station (小菜蛾剪辑工坊). The skill identifier remains `cut-station`.

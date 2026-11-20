@@ -371,6 +371,7 @@ def main():
     p = sub.add_parser("revise")
     p.add_argument("--from-stage", required=True)
     p.add_argument("--reason", required=True)
+    p.add_argument("--adaptive-motion", action="store_true")
     p = sub.add_parser("quality-plan")
     p.add_argument("--plan", type=Path, required=True)
     p.add_argument("--creator-id", required=True)
@@ -405,6 +406,8 @@ def main():
                 skill_paths[key] = str(resolve_skill(key, override=value))
             features = [x for x in args.features.split(",") if x]
             if any(f not in manifest["features"] for f in features): raise ValueError("未知条件资料特性")
+            if "adaptive_motion" in features and args.mode not in quality_gate.ADAPTIVE_MODES:
+                raise ValueError("素材驱动选型只用于 full / preview / edit 画面路线")
             state = {"schema_version": 3, "project": str(state_path.parent), "mode": args.mode, "voice": args.voice,
                      "enforcement": "cooperative_local_gate", "epoch": uuid.uuid4().hex,
                      "route": route, "features": features, "script_review_required": args.script_review_required,
@@ -508,6 +511,12 @@ def main():
             output = {"status": "independently_reviewed", **receipt, "not_proven": ["user acceptance", "unobserved playback/listening", "unforgeable reviewer identity"]}
         elif cmd == "revise":
             index = state["route"].index(args.from_stage)
+            if args.adaptive_motion:
+                if (state["mode"] not in quality_gate.ADAPTIVE_MODES
+                        or index > state["route"].index("motion_sound_plan")):
+                    raise ValueError("启用素材驱动选型须从动效方案或之前的画面阶段修订")
+                if "adaptive_motion" not in state["features"]:
+                    state["features"].append("adaptive_motion")
             for stage in state["route"][index:]: state["stages"].pop(stage,None)
             if args.from_stage in ("intake", "inventory", "script", "rough_edit", "motion_sound_plan"):
                 state.pop("quality", None)

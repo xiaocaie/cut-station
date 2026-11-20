@@ -365,6 +365,24 @@
     }
   },
   "features": {
+    "adaptive_motion": {
+      "stages": [
+        "motion_sound_plan",
+        "review"
+      ],
+      "docs": [
+        "references/adaptive-motion.md"
+      ]
+    },
+    "mg_visual_recipes": {
+      "stages": [
+        "motion_sound_plan",
+        "polish"
+      ],
+      "docs": [
+        "references/mg-visual-recipes.md"
+      ]
+    },
     "fonts": {
       "stages": [
         "polish"

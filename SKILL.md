@@ -1,9 +1,9 @@
 ---
 name: cut-station
-description: Create and edit source-grounded tutorials, product demos and other videos with a coding agent. Use for scripts, optional narration, measured subtitles, screen-recording edits, motion graphics, previews and verified exports. Supports partial edits and protects approved material.
+description: Create and edit source-grounded tutorials, product demos and other videos with a coding agent. Use for scripts, optional narration, measured subtitles, screen-recording edits, motion graphics, adaptive effects and typography (“使用适合的动效”), previews and verified exports. Supports partial edits and protects approved material.
 license: MIT
 metadata:
-  version: "0.1.0-rc.1"
+  version: "0.1.0-rc.2"
 ---
 
 # Xiaocaie Cut Station · 小菜蛾剪辑工坊
@@ -19,6 +19,10 @@ Turn real footage and a clear brief into an editable, reviewable video. This is 
 5. Select only the needed [route](workflow-manifest.json): script / subtitles / voice_input / voice / full / preview / edit / font_only / export / asset_package. A preview request does not authorize full export or publication; skill maintenance does not authorize changing a video.
 6. Use `scripts/workflow_guard.py` with project-local state. Choose `engine_remotion` or `engine_hyperframes` before writing engine code; add `source_processing` and `shotcraft` only when actually used and installed. Resolve optional skills through host roots or `--skill-path KEY=PATH`. Declining recommendations leaves base writing/timing/validation available. Missing an engine limits only dependent rendering; explain the gap and continue independent work.
 
+## “使用适合的动效”
+
+制作、预览或修改视频画面时，用户说「使用适合的动效」「用合适的特效」「根据素材搭配动效」或作同义授权，按 [素材驱动的动效选型](references/adaptive-motion.md) 执行。新项目初始化带 `--features adaptive_motion` 并保留本期用到的其他特性；已有项目用 `revise --from-stage motion_sound_plan --adaptive-motion --reason …`，按本次修改范围重核。以实际素材为依据，逐主段分别评估镜头/转场和文字，对合适项调用已选组件并在工程中落实。两类都要判断；留静、直切或文字保持现状时写明该段具体依据，遵守用户明确的效果和保护约束。质量方案、当前画面取证和独立审查缺一项即不能通过相应阶段。
+
 ## Production invariants
 
 - Ground claims in actual footage/results. Distinguish real, illustrative, planned and unverified material. Do not combine unrelated cases into fabricated continuous success.
@@ -33,6 +37,7 @@ Turn real footage and a clear brief into an editable, reviewable video. This is 
 - For requested UI emphasis, use [动态虚线高亮框 / green-dashed-highlight](references/green-dashed-highlight.md), including “绿色动态虚线高亮框”, “自定义颜色虚线框” and “透明绿底虚线框”. Border/fill colors and their opacities can be set independently. Read its guide and reuse the frame-driven implementation.
 - For “双端互通同款字体”, “站酷庆科黄油体” or “荧光笔下划线标题”, read [marker titles](references/marker-underline-title.md) and [fonts](references/fonts.md). The bundled font can be reused with other text, independently of the underline.
 - For “提示词输入演示” or “对话框打字效果”, read [prompt typing](references/prompt-typing-demo.md). Preserve the supplied prompt, show typing/cursor and a full-text reading hold using deterministic timeline timing.
+- For named MG effects or matching visual descriptions, read [MG components and presets](references/mg-visual-recipes.md). Use the bundled frame-driven component for the matching shot. An explicit effect or preset takes priority. For an unnamed effect, infer the shot's motion from the requested visual behavior and use the matching component if it fits. The “暖白纸卡” and “暗场展台” presets may also be used by themselves. With the workflow guard select `mg_visual_recipes` when using the library.
 - Copy-ready invocation examples for these presets are in [effect prompts](references/effect-prompts.md).
 
 ## Stage references

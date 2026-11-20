@@ -13,7 +13,9 @@ import uuid
 
 ROOT = Path(__file__).resolve().parents[1]
 CATALOG = ROOT / "quality-requirements.json"
-VISUAL_MODES = {"full", "preview", "edit", "font_only"}
+ADAPTIVE_MODES = {"full", "preview", "edit"}
+VISUAL_MODES = ADAPTIVE_MODES | {"font_only"}
+MOTION_CHANNELS = ("picture", "text")
 STAGE_STATES = {"motion_sound_plan": "plan_validated", "polish": "evidence_ready",
                 "review": "independently_reviewed", "export": "technical_verified",
                 "delivery": "review_ready"}
@@ -48,6 +50,44 @@ def number(value, label):
     if isinstance(value, bool) or not isinstance(value, (int, float)) or not math.isfinite(value):
         raise ValueError(f"无效数字：{label}")
     return value
+
+
+def adaptive_motion_enabled(state):
+    return state.get("mode") in ADAPTIVE_MODES and "adaptive_motion" in state.get("features", [])
+
+
+def validate_motion_choices(section, start, settled, sources):
+    selection = section.get("adaptive_motion")
+    label = section["id"]
+    if not isinstance(selection, dict):
+        raise ValueError(f"{label} 缺少素材驱动的镜头和文字选型")
+    material = selection.get("material_files")
+    if not isinstance(material, list) or not material or not {Path(path).resolve() for path in material} <= sources:
+        raise ValueError(f"{label} 的选型须绑定方案中实际采用或受保护的素材文件")
+    applied = set()
+    for channel in MOTION_CHANNELS:
+        row = selection.get(channel)
+        if not isinstance(row, dict):
+            raise ValueError(f"{label} 缺少 {channel} 选型")
+        reason = row.get("reason")
+        if not isinstance(reason, str) or len(reason.strip()) < 8:
+            raise ValueError(f"{label}/{channel} 缺少根据素材作出选择的具体理由")
+        if row.get("choice") == "skip":
+            if row.get("card_ids") or any(key in row for key in ("start", "end")):
+                raise ValueError(f"{label}/{channel} 留静决定不能声明动效实现或动作时间")
+            continue
+        if row.get("choice") != "use":
+            raise ValueError(f"{label}/{channel} 必须明确 use 或 skip")
+        ids = row.get("card_ids")
+        if not isinstance(ids, list) or not ids or not set(ids) <= set(section.get("card_ids", [])):
+            raise ValueError(f"{label}/{channel} 的选用组件未绑定本段真实实现")
+        action_start = number(row.get("start"), f"{label}/{channel} start")
+        action_end = number(row.get("end"), f"{label}/{channel} end")
+        if section["motion"] != "library" or not start <= action_start < action_end <= settled:
+            raise ValueError(f"{label}/{channel} 的动作范围须在本段落定阅读前")
+        applied.update(ids)
+    if applied != set(section.get("card_ids", [])):
+        raise ValueError(f"{label} 实现的镜头卡须逐一对应本段选型")
 
 
 def design(state, plan_path, creator):
@@ -85,8 +125,10 @@ def design(state, plan_path, creator):
     sources = plan.get("source_files", [])
     if not sources:
         raise ValueError("必须绑定实际引擎源码和素材文件")
+    adaptive = adaptive_motion_enabled(state)
+    source_paths = {Path(path).resolve() for path in sources}
     cards = plan.get("cards", [])
-    card_map, conditional, implementations = {}, [], set()
+    card_map, conditional, implementations, engine_paths = {}, [], set(), set()
     for c in cards:
         key = c.get("id")
         if not key or key in card_map or c.get("adoption") != "implemented":
@@ -98,8 +140,10 @@ def design(state, plan_path, creator):
             raise ValueError("重复复制同一卡片/准确实现不能冒充多种镜头卡")
         implementations.add(implementation_key)
         code = c.get("code_files", [])
-        if not code or not set(map(str, map(Path, code))).issubset(set(map(str, map(Path, sources)))):
+        code_paths = {Path(path).resolve() for path in code}
+        if not code_paths or not code_paths <= source_paths:
             raise ValueError("镜头卡必须映射到本期已绑定的实际引擎代码")
+        engine_paths.update(code_paths)
         if not c.get("preserved_parameters") or not c.get("adaptations"):
             raise ValueError("镜头卡缺少保留参数或实际适配记录")
         card_map[key] = c
@@ -130,6 +174,8 @@ def design(state, plan_path, creator):
         settled = number(s.get("settled_at", start), "settled_at")
         if settled < start or settled > end-load(CATALOG)["limits"]["minimum_settled_seconds"]:
             raise ValueError("主段未留出至少0.5秒落定阅读；复杂内容仍需独立判断")
+        if adaptive:
+            validate_motion_choices(s, start, settled, source_paths - engine_paths)
         override = s.get("still_label_override")
         if override is not None:
             if (not s.get("still") or not isinstance(override, dict)
@@ -145,7 +191,8 @@ def design(state, plan_path, creator):
     if set(seen) != set(shot_map) or len(seen) != len(shot_map):
         raise ValueError("全片镜头未逐一归属主段，或重复归属")
     minimum = load(CATALOG)["limits"]["full_min_distinct_implemented_cards"]
-    if state.get("mode") in ("full", "preview") and (len(used) < minimum or len([s for s in sections if s["motion"] == "library"]) < 2):
+    if (not adaptive and state.get("mode") in ("full", "preview")
+            and (len(used) < minimum or sum(s["motion"] == "library" for s in sections) < 2)):
         raise ValueError("完整制作必须落实多种镜头卡并覆盖多个适用主段；单标题卡不通过")
     bound = [p, CATALOG, plan["timeline"], *sources, *conditional, *override_evidence]
     if plan.get("timing"): bound.append(plan["timing"])
@@ -156,7 +203,12 @@ def design(state, plan_path, creator):
             "catalog_sha256": sha(CATALOG)}
 
 
-def expected_frames(plan, fps, count):
+def motion_action_frames(row, fps):
+    a, b = round(row["start"] * fps), round(row["end"] * fps)
+    return {a, (a+b)//2, b}
+
+
+def expected_frames(plan, fps, count, adaptive=False):
     timeline = load(plan["timeline"])
     frames = {0, count-1}
     for s in timeline["shots"]:
@@ -166,6 +218,11 @@ def expected_frames(plan, fps, count):
     for s in plan["sections"]:
         f = round(s["settled_at"]*fps)
         frames.update([max(0, f-1), f, min(count-1, f+1)])
+        if adaptive:
+            for row in (s["adaptive_motion"][channel] for channel in MOTION_CHANNELS):
+                if row["choice"] == "use":
+                    action = motion_action_frames(row, fps)
+                    frames.update(action | {max(0, min(action)-1)})
     if plan.get("timing"):
         for c in load(plan["timing"])["cues"]:
             frames.add(round((c["start"]+c["end"])*fps/2))
@@ -203,7 +260,7 @@ def collect(state, video, output):
     if b == 0 or abs(a/b-fps) > .001 or int(stream.get("nb_read_frames", 0)) != count or abs(float(stream.get("duration", probe["format"]["duration"]))-count/fps) > 1/fps+.02:
         raise ValueError("实际渲染的fps/时长与当前时间轴不一致")
     plan = load(binding["plan_path"])
-    selected = expected_frames(plan, fps, count)
+    selected = expected_frames(plan, fps, count, adaptive_motion_enabled(state))
     out.mkdir(parents=True)
     expression = frame_select_expression(selected)
     try:
@@ -238,9 +295,11 @@ def evidence(state):
     if package["receipt"] != receipt["receipt"] or package["plan_sha256"] != binding["plan_sha256"] or package["catalog_sha256"] != sha(CATALOG):
         raise ValueError("取帧证据不是当前方案/当前规则")
     unchanged(package["snapshots"])
-    expected = expected_frames(load(binding["plan_path"]), binding["fps"], package["frames"])
+    expected = expected_frames(
+        load(binding["plan_path"]), binding["fps"], package["frames"], adaptive_motion_enabled(state),
+    )
     if [x["frame"] for x in package["images"]] != expected:
-        raise ValueError("证据包未覆盖每个镜头、cue中点和切换边界")
+        raise ValueError("证据包未覆盖要求的镜头、字幕、切换及选用动作帧")
     return package
 
 
@@ -275,6 +334,20 @@ def review(state, report_path, reviewer):
         frame_observation(r, frames, "审查结论")
     plan = load(binding["plan_path"])
     ranges = section_ranges(plan, binding["fps"])
+    if adaptive_motion_enabled(state):
+        decisions = report.get("adaptive_motion", [])
+        expected = {(s["id"], channel): s["adaptive_motion"][channel]
+                    for s in plan["sections"] for channel in MOTION_CHANNELS}
+        if len(decisions) != len(expected) or {(r.get("section_id"), r.get("channel")) for r in decisions} != set(expected):
+            raise ValueError("独立审查必须逐主段复核镜头和文字的选用及留静理由")
+        for row in decisions:
+            if row.get("result") != "pass":
+                raise ValueError(f"素材驱动选型未通过：{row['section_id']}/{row['channel']}")
+            a, b = ranges[row["section_id"]]
+            frame_observation(row, {f for f in frames if a <= f < b}, "素材驱动选型")
+            choice = expected[row["section_id"], row["channel"]]
+            if choice["choice"] == "use" and not motion_action_frames(choice, binding["fps"]) <= set(row["frames"]):
+                raise ValueError("独立审查须复核选用动作的首、中、末帧")
     # Every claimed implementation is checked in its actual section. Distinct IDs
     # in a creator's design do not establish that a rendered card was implemented.
     expected = {(s["id"], c) for s in plan["sections"] if s["motion"] == "library" for c in s["card_ids"]}

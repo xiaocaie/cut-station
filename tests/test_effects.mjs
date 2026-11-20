@@ -3,6 +3,7 @@ import test from 'node:test';
 import {getGreenDashedHighlight} from '../assets/effects/green-dashed-highlight.mjs';
 import {getMarkerUnderline} from '../assets/effects/marker-underline.mjs';
 import {createPromptTyping} from '../assets/effects/prompt-typing.mjs';
+import {createMgMotion, MG_EFFECTS, MG_PRESETS, resolveMgEffect, resolveMgPreset} from '../assets/effects/mg-motion.mjs';
 
 const box = {x: 100, y: 200, width: 400, height: 80};
 
@@ -83,4 +84,39 @@ test('prompt cursor blinks after typing and handles empty/paste modes', () => {
   assert.equal(createPromptTyping({text: '', holdSeconds: 1})(0).sendEnabled, false);
   assert.equal(createPromptTyping({text: '粘贴全文', typingSeconds: 0, holdSeconds: 1})(0).text, '粘贴全文');
   assert.throws(() => createPromptTyping({text: 'x', typingSeconds: -1}), RangeError);
+});
+
+test('MG effects resolve by name or by the requested motion', () => {
+  const examples = [
+    ['chapter-flip', '使编号卡转窄时切网页'],
+    ['page-to-card', '完整官网的页面缩到左边'],
+    ['branch-cards', '把中心卡分出四张模块卡并连线'],
+    ['grid-roll-stamp', '让格子逐个填亮，给第三项盖章'],
+    ['data-score', '柱子从零长出后显示达标线'],
+    ['gallery-2-5d', '三张样片先虚焦再清晰并错层排开'],
+  ];
+  for (const [id, description] of examples) {
+    assert.equal(resolveMgEffect(MG_EFFECTS[id].name), id);
+    assert.equal(resolveMgEffect(description), id);
+  }
+  assert.equal(resolveMgEffect('保留原录屏供观众读菜单'), null);
+  assert.equal(resolveMgEffect('章节卡侧翻和数据生长与分数尺'), null);
+});
+
+test('MG presets resolve independently and painters accept a supplied canvas factory', () => {
+  assert.equal(resolveMgPreset('暖白纸卡'), 'paper');
+  assert.equal(resolveMgPreset('暗场展台'), 'stage');
+  assert.equal(resolveMgEffect('暖白纸卡'), null);
+  assert.notEqual(MG_PRESETS.paper.bg, MG_PRESETS.stage.bg);
+
+  const newCanvas = () => ({getContext: () => ({fillRect() {}, beginPath() {}, arc() {}, fill() {}})});
+  for (const id of Object.keys(MG_EFFECTS)) {
+    const motion = createMgMotion({id, preset: '暗场展台', canvasFactory: newCanvas});
+    assert.equal(motion.preset, 'stage');
+    assert.equal(motion.duration, MG_EFFECTS[id].duration);
+    assert.equal(typeof motion.draw, 'function');
+  }
+  assert.equal(createMgMotion({id:'branch-cards', duration:8, canvasFactory:newCanvas}).duration, 8);
+  assert.throws(() => createMgMotion({id:'branch-cards', duration:0, canvasFactory:newCanvas}), RangeError);
+  assert.throws(() => createMgMotion({id:'chapter-flip', content:{cards:['章'], selectedCard:1}, canvasFactory:newCanvas}), RangeError);
 });

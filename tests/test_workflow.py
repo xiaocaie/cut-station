@@ -319,6 +319,108 @@ class GateTests(unittest.TestCase):
             self.call("exit","--stage","polish","--report",report,expected=1)
         self.assertEqual(self.state()["stages"]["polish"]["status"],"in_progress")
 
+    def test_adaptive_motion_is_routed_only_for_visual_production(self):
+        self.state_file.unlink()
+        self.call("init", "--mode", "script", "--voice", "none", "--features", "adaptive_motion", expected=1)
+        self.call("init", "--mode", "edit", "--voice", "none")
+        self.call("revise", "--from-stage", "polish", "--adaptive-motion", "--reason", "当前用户要求", expected=1)
+        self.call("revise", "--from-stage", "motion_sound_plan", "--adaptive-motion", "--reason", "当前用户要求")
+        for stage in ("motion_sound_plan", "review"):
+            packets = self.call("plan", "--stage", stage)["packets"]
+            self.assertTrue(any(p["path"].endswith("/adaptive-motion.md") for p in packets))
+
+    def test_adaptive_motion_plan_checks_both_channels_and_implemented_cards(self):
+        self.quality_fixture(mode="preview", collect=False, render=False)
+        self.call("revise", "--from-stage", "motion_sound_plan", "--adaptive-motion", "--reason", "当前用户要求")
+        self.fixture_reads("motion_sound_plan")
+        command = ("quality-plan", "--plan", self.plan_path, "--creator-id", "synthetic-creator")
+        self.assertIn("选型", self.call(*command, expected=1)["error"])
+        plan = guard.load(self.plan_path)
+        material = self.root / "approved-words.txt"
+        material.write_text("Synthetic content basis for the shot", encoding="utf-8")
+        plan["source_files"].append(str(material))
+        for i, section in enumerate(plan["sections"]):
+            section["adaptive_motion"] = {
+                "material_files": [str(material)],
+                "picture": {"choice": "use", "reason": "Show the original material in the assigned shot",
+                            "card_ids": [section["id"]], "start": i + 0.03, "end": i + 0.14},
+            }
+        guard.save(self.plan_path, plan)
+        self.assertIn("text", self.call(*command, expected=1)["error"])
+        for section in plan["sections"]:
+            section["adaptive_motion"]["text"] = {
+                "choice": "skip", "reason": "The existing material already contains the complete title",
+            }
+        choice = plan["sections"][0]["adaptive_motion"]
+        choice["picture"]["card_ids"] = ["unimplemented"]
+        guard.save(self.plan_path, plan)
+        self.assertIn("真实实现", self.call(*command, expected=1)["error"])
+        choice["picture"]["card_ids"] = ["one"]
+        choice["material_files"] = [str(self.engine)]
+        guard.save(self.plan_path, plan)
+        self.assertIn("素材文件", self.call(*command, expected=1)["error"])
+        choice["material_files"] = [str(material)]
+        guard.save(self.plan_path, plan)
+        self.call(*command)
+        native_frames = quality.expected_frames(plan, 30, 60)
+        adaptive_frames = quality.expected_frames(plan, 30, 60, adaptive=True)
+        self.assertIn(2, adaptive_frames)
+        self.assertNotIn(2, native_frames)
+
+        # Source-specific reasons can justify quiet reading in a complete preview.
+        plan["cards"] = []
+        for section in plan["sections"]:
+            section["motion"] = "static_reading"
+            section["quiet_reason"] = "The protected source has a long passage to read"
+            section.pop("card_ids")
+            section["adaptive_motion"]["picture"] = {
+                "choice": "skip", "reason": "Motion would interrupt reading the protected passage",
+            }
+        guard.save(self.plan_path, plan)
+        self.assertEqual(self.call(*command)["cards"], [])
+
+    @unittest.skipUnless(shutil.which("ffmpeg") and shutil.which("ffprobe"), "media tools unavailable")
+    def test_adaptive_motion_review_requires_both_decisions_on_current_frames(self):
+        self.quality_fixture(mode="preview", collect=False)
+        self.call("revise", "--from-stage", "motion_sound_plan", "--adaptive-motion", "--reason", "当前用户要求")
+        plan = guard.load(self.plan_path)
+        plan["source_files"].append(str(self.video))
+        for i, section in enumerate(plan["sections"]):
+            section["adaptive_motion"] = {
+                "material_files": [str(self.video)],
+                "picture": {"choice": "use", "reason": "Show the original material in the assigned shot",
+                            "card_ids": [section["id"]], "start": i + 0.03, "end": i + 0.14},
+                "text": {"choice": "skip", "reason": "No editorial text in the supplied source"},
+            }
+        plan["sections"][0]["adaptive_motion"]["text"] = {
+            "choice": "use", "reason": "The opener uses the same card for the on-screen headline",
+            "card_ids": ["one"], "start": 0.06, "end": 0.15,
+        }
+        guard.save(self.plan_path, plan)
+        self.fixture_reads("motion_sound_plan")
+        self.call("quality-plan", "--plan", self.plan_path, "--creator-id", "synthetic-creator")
+        self.call("quality-evidence", "--video", self.video, "--out", self.root / "motion-evidence")
+        report = self.review_fixture()
+        self.assertIn("逐主段复核", self.register_review(report, expected=1)["error"])
+        report["adaptive_motion"] = []
+        for i, section in enumerate(plan["sections"]):
+            for channel in quality.MOTION_CHANNELS:
+                choice = section["adaptive_motion"][channel]
+                frames = sorted(quality.motion_action_frames(choice, 30)) if choice["choice"] == "use" else [i * 30]
+                report["adaptive_motion"].append({
+                    "section_id": section["id"], "channel": channel, "result": "pass", "frames": frames,
+                    "observation": "Synthetic check of the stated source fit within the actual section",
+                })
+        headline = report["adaptive_motion"][1]
+        headline_frames = headline["frames"]
+        headline["frames"] = headline_frames[:1]
+        self.assertIn("首、中、末", self.register_review(report, expected=1)["error"])
+        headline["frames"] = headline_frames
+        report["adaptive_motion"][-1]["frames"] = [0]
+        self.register_review(report, expected=1)
+        report["adaptive_motion"][-1]["frames"] = [30]
+        self.register_review(report)
+
     @unittest.skipUnless(shutil.which("ffmpeg") and shutil.which("ffprobe"), "media tools unavailable")
     def test_selected_recipe_needs_all_current_chunks(self):
         self.quality_fixture(mode="preview")
